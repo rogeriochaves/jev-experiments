@@ -89,12 +89,21 @@ tr:last-child td { border-bottom: 0; }
 .calc .out .v small { font-size: 12px; color: var(--ink-2); }
 .calc .fine { grid-column: 1 / -1; font-size: 12.5px; color: var(--ink-2); margin: 0; }
 .samples { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-.sample { background: var(--surface); border: 1px solid var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
-.sample h3 { display: flex; justify-content: space-between; align-items: baseline; }
-.sample h3 small { font-family: var(--mono); font-weight: 400; font-size: 11.5px; color: var(--ink-3); }
-.sample .q { font-size: 12.5px; color: var(--ink-3); }
+.sample { background: var(--surface); border: 1px solid var(--line); padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 16px; }
+.sample .head { display: flex; flex-direction: column; gap: 6px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.sample .head h3 { margin: 0; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.sample .head .flag { font-family: var(--mono); font-weight: 400; font-size: 11.5px; color: var(--accent); background: var(--surface-2); padding: 2px 7px; border-radius: 3px; }
+.sample .head .desc { margin: 0; font-size: 13px; line-height: 1.45; color: var(--ink-2); }
+.sample .gen { display: flex; flex-direction: column; gap: 4px; }
+.sample .q { font-size: 12.5px; color: var(--ink-3); line-height: 1.4; }
 .sample .a { font-family: var(--display); font-size: 17px; font-weight: 500; line-height: 1.35; }
-.sample .stat { font-family: var(--mono); font-size: 11.5px; color: var(--ink-3); }
+.sample .stat { font-family: var(--mono); font-size: 11.5px; color: var(--ink-3); margin-top: 2px; }
+.term { margin: 0 0 16px; background: #14171c; color: #e6e9ef; border: 1px solid #2a2f39; padding: 14px 18px; font-family: var(--mono); font-size: 13px; line-height: 1.8; overflow-x: auto; white-space: pre; }
+.term .p { color: #5f6778; user-select: none; }
+.term .k { color: #8fc2ff; }
+.term .f { color: #f0a45d; }
+.term .s { color: #a8d8a0; }
+.term .c { color: #6b7385; font-style: italic; }
 .sample .fail { font-family: var(--mono); font-size: 12px; }
 pre { margin: 0; background: var(--code-bg); border: 1px solid var(--line); padding: 12px 14px; font-family: var(--mono); font-size: 12.5px; line-height: 1.5; overflow-x: auto; color: var(--ink); }
 .code-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -216,7 +225,12 @@ a { color: var(--accent); }
   <div class="eyebrow">Text generation</div>
   <h2>cavejev: can Jev write sentences</h2>
   <p>Jev cannot output text, but a Choice question returns a probability for every option, so a loop can ask "which word comes next" with all 255 caveman words as options and sample the next word from those probabilities. The sampler uses the same controls as a normal language model decoder: temperature, top-k, top-p, a repetition penalty, frequency and presence penalties, no repeated trigrams, and no word twice in a row.</p>
-  <p>Without those controls, greedy decoding repeats itself after a few words, for example "do light do light do light do light" on the question about the sky. The samples below use the full sampler.</p>
+  <p>Without those controls, greedy decoding repeats itself after a few words, for example "do light do light do light do light" on the question about the sky. The samples below use the full sampler. There are three modes. The parallel mode predicts every word slot at once and re-predicts the least confident slots for six rounds. The hier mode asks for the word class and then the word inside that class, in one request per word. The seq mode asks one flat 255-way Choice per word.</p>
+  <div class="term"><span class="c"># clone github.com/rogeriochaves/jev-experiments, put TYPESAFE_API_KEY in .env, then:</span>
+<span class="p">$</span> <span class="k">go run</span> ./cmd/cavejev <span class="f">-mode</span> parallel <span class="s">"Why is the sky blue?"</span>
+<span class="p">$</span> <span class="k">go run</span> ./cmd/cavejev <span class="f">-mode</span> hier <span class="s">"Why is the sky blue?"</span>
+<span class="p">$</span> <span class="k">go run</span> ./cmd/cavejev <span class="f">-mode</span> seq <span class="s">"Why is the sky blue?"</span>
+<span class="p">$</span> <span class="k">go run</span> ./cmd/cavejev <span class="f">-mode</span> hier <span class="f">-greedy</span> <span class="s">"Why is the sky blue?"</span>   <span class="c"># no sampler, see it loop</span></div>
   <div class="samples" id="cave-samples"></div>
   <div class="tablewrap" style="margin-top:12px"><table id="cave-table"></table></div>
   <h3 style="margin-top:20px">Why hier mode gives better sentences</h3>
@@ -422,12 +436,12 @@ a { color: var(--accent); }
 
   // ---------- cavejev ----------
   const modes = [
-    ['seq', 'flat 255-way Choice, one request per word', D.cavejev.seq],
-    ['hier', 'word class × per-class Choice, one request per word', D.cavejev_hier],
-    ['parallel', 'mask-predict, 6 rounds, all slots per round', D.cavejev_parallel],
+    ['parallel', 'All word slots predicted at once, six rounds, the least confident slots re-predicted each round.', D.cavejev_parallel],
+    ['hier', 'Word class first, then the word inside that class, in one request per word.', D.cavejev_hier],
+    ['seq', 'One flat 255-way Choice per word.', D.cavejev.seq],
   ];
-  document.getElementById('cave-samples').innerHTML = modes.map(([name, desc, gens]) => `<div class="sample"><h3>${name} <small>${desc}</small></h3>` +
-    gens.map(g => `<div><div class="q">${g.prompt}</div><div class="a">${g.text.replace(/\.\.$/, '.') || '(empty)'}</div><div class="stat">${g.words} words · ${g.req} req · ${fmt(g.wall, 1)} s · ${money(g.tok / 1e6 * 0.042)}</div></div>`).join('') + '</div>').join('');
+  document.getElementById('cave-samples').innerHTML = modes.map(([name, desc, gens]) => `<div class="sample"><div class="head"><h3>${name} <span class="flag">-mode ${name}</span></h3><p class="desc">${desc}</p></div>` +
+    gens.map(g => `<div class="gen"><div class="q">${g.prompt}</div><div class="a">${g.text.replace(/\.\.$/, '.') || '(empty)'}</div><div class="stat">${g.words} words · ${g.req} requests · ${fmt(g.wall, 1)} s · ${money(g.tok / 1e6 * 0.042)}</div></div>`).join('') + '</div>').join('');
   document.getElementById('cave-table').innerHTML = `<tr><th>mode</th><th class="num">words</th><th class="num">requests</th><th class="num">tokens</th><th class="num">tokens / word</th><th class="num">words / s</th><th class="num">$ / reply</th></tr>` +
     modes.map(([name, , gens]) => { const w = gens.reduce((a, g) => a + g.words, 0), r = gens.reduce((a, g) => a + g.req, 0), t = gens.reduce((a, g) => a + g.tok, 0), s = gens.reduce((a, g) => a + g.wall, 0); return `<tr><td>${name}</td><td class="num">${w}</td><td class="num">${r}</td><td class="num">${k(t)}</td><td class="num">${fmt(t / w)}</td><td class="num">${fmt(w / s, 1)}</td><td class="num">${money(t / 1e6 * 0.042 / gens.length)}</td></tr>`; }).join('');
   const hierSky = D.cavejev_hier[0].steps.slice(0, 5);
