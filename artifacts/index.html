@@ -225,7 +225,7 @@ a { color: var(--accent); }
   <div class="eyebrow">Text generation</div>
   <h2>cavejev: can Jev write sentences</h2>
   <p>Jev cannot output text, but a Choice question returns a probability for every option, so a loop can ask "which word comes next" with all 255 caveman words as options and sample the next word from those probabilities. The sampler uses the same controls as a normal language model decoder: temperature, top-k, top-p, a repetition penalty, frequency and presence penalties, no repeated trigrams, and no word twice in a row.</p>
-  <p>Without those controls, greedy decoding repeats itself after a few words, for example "do light do light do light do light" on the question about the sky. The samples below use the full sampler. There are three modes. The parallel mode predicts every word slot at once and re-predicts the least confident slots for six rounds. The hier mode asks for the word class and then the word inside that class, in one request per word. The seq mode asks one flat 255-way Choice per word.</p>
+  <p>Without those controls, greedy decoding repeats itself after a few words, for example "do light do light do light do light" on the question about the sky. The samples below use the full sampler. There are three modes. The hier mode asks for the word class and then the word inside that class, in one request per word. The parallel mode predicts every word slot at once and re-predicts the least confident slots for six rounds. The seq mode asks one flat 255-way Choice per word.</p>
   <div class="term"><span class="k">go run</span> ./cmd/cavejev <span class="f">-mode</span> hier <span class="s">"Why is the sky blue?"</span></div>
   <div class="samples" id="cave-samples"></div>
   <div class="tablewrap" style="margin-top:12px"><table id="cave-table"></table></div>
@@ -432,8 +432,8 @@ a { color: var(--accent); }
 
   // ---------- cavejev ----------
   const modes = [
-    ['parallel', 'All word slots predicted at once, six rounds, the least confident slots re-predicted each round.', D.cavejev_parallel],
     ['hier', 'Word class first, then the word inside that class, in one request per word.', D.cavejev_hier],
+    ['parallel', 'All word slots predicted at once, six rounds, the least confident slots re-predicted each round.', D.cavejev_parallel],
     ['seq', 'One flat 255-way Choice per word.', D.cavejev.seq],
   ];
   document.getElementById('cave-samples').innerHTML = modes.map(([name, desc, gens]) => `<div class="sample"><div class="head"><h3>${name} <span class="flag">-mode ${name}</span></h3><p class="desc">${desc}</p></div>` +
