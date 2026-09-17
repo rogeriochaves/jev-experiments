@@ -272,7 +272,7 @@ a { color: var(--accent); }
     ['p50 latency, 1k-token state', fmt(lat1k.p50) + '<small> ms</small>', 'one Noul, sequential, incl. ~100 ms network'],
     ['steady throughput', k(Math.round(steadyTok)) + '<small> tok/s</small>', fmt(steadyReq, 0) + ' req/s of 1.9k-token traces, 256 in flight'],
     ['100k traces × 1.9k tokens', money(jobTok / 1e6 * 0.042), fmt(jobTok / 1e6, 0) + 'M input tokens, any number of questions'],
-    ['wall time for that job', secs(Math.max(jobTok / steadyTok, 100000 / steadyReq)), 'at the steady ceiling; tokens/s is the binding limit'],
+    ['wall time for that job', secs(Math.max(jobTok / steadyTok, 100000 / steadyReq)), 'at the steady ceiling; ' + (jobTok / steadyTok >= 100000 / steadyReq ? 'tokens/s' : 'requests/s') + ' is the binding limit, pack 2 per request to flip it'],
   ];
   document.getElementById('tiles').innerHTML = tiles.map(t => `<div class="tile"><div class="label">${t[0]}</div><div class="value">${t[1]}</div><div class="note">${t[2]}</div></div>`).join('');
 
