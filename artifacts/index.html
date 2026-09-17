@@ -127,7 +127,7 @@ a { color: var(--accent); }
   <div>
     <div class="eyebrow">TypeSafe jev-1.13 · measured 2026-09-17 from Amsterdam</div>
     <h1>Jev on the Bench</h1>
-    <p class="lede">How fast the model answers, how much it can read per call, how many calls it takes at once, what a 100k-trace judging job costs, and two toys that make a non-generative model generate anyway.</p>
+    <p class="lede">Jev answers typed questions about a piece of text and returns probabilities instead of text. This page measures how fast one request is, how much text fits in one request, how many requests run at once, what a job over 100k traces costs, and whether the same model can be pushed into writing sentences and code.</p>
   </div>
   <div class="meta">$0.042 per million input tokens<br>output tokens free<br>docs say 250k tok/s, 1200 req/min<br>repo: rogeriochaves/jev-experiments</div>
 </header>
@@ -138,8 +138,9 @@ a { color: var(--accent); }
 
 <section>
   <div class="eyebrow">Latency</div>
-  <h2>Round trip is flat until the state gets big</h2>
-  <p>One request at a time, five repeats per point, p50 shown. The state is a synthetic support transcript; the questions are yes/no Nouls. Input size barely moves latency until ~13k tokens, and 50 questions cost about the same as one. Whatever runs behind the endpoint is not paying per token the way a decoder does. About 100 ms of every number here is the Atlantic.</p>
+  <h2>How fast is one request</h2>
+  <p>A request with a 1k-token conversation and one yes/no question comes back in about 275 ms. Sending a 13k-token conversation instead adds 50 ms, and a 24k-token one adds 150 ms, so input size only starts to matter above 10k tokens. Adding questions costs even less: 50 questions on the same text come back in the same time as one.</p>
+  <p class="sub">Each point is the median of five requests sent one at a time from Amsterdam, and about 100 ms of every number is network time.</p>
   <figure>
     <div id="latency"></div>
     <figcaption><span class="legend"><span><i style="background:var(--s1)"></i>1 question</span><span><i style="background:var(--s2)"></i>10 questions</span><span><i style="background:var(--s3)"></i>50 questions</span></span><span>x axis is log scale. Hover a point for the exact numbers.</span></figcaption>
@@ -148,8 +149,9 @@ a { color: var(--accent); }
 
 <section>
   <div class="eyebrow">Concurrency</div>
-  <h2>Throughput climbs to 512 in flight, then the limiter draws its line</h2>
-  <p>Each burst sends a fixed batch at a given number of in-flight requests. A single request carries one ~1.9k-token conversation and three Nouls. A packed request carries ten conversations and thirty Nouls (twelve is the most that fit under the 32k state cap). Single requests never saw a 429 up to 470k tokens/s in a burst; packed requests started getting rate limited around 340k tokens/s. Latency is the price of queueing: p50 goes from 270 ms at 8 in flight to 2 s at 512.</p>
+  <h2>How many requests can run at once</h2>
+  <p>Each test sends a batch of requests while keeping a fixed number of them in flight, from 8 up to 512. A single request carries one conversation of about 1.9k tokens and three yes/no questions. A packed request carries ten conversations and thirty questions, which is close to the ceiling, because twelve conversations is the most that fit under the 32k-token limit on one request.</p>
+  <p>With single requests, throughput kept climbing to 160 requests/s and 470k tokens/s at 512 in flight without a single 429. With packed requests the API started returning 429 at 64 in flight, around 340k tokens/s. The cost of more in-flight requests is latency: the median went from 270 ms at 8 in flight to 2 s at 512, because requests wait in a queue on their side.</p>
   <div class="charts-2">
     <figure><div id="conc-tok"></div><figcaption><span class="legend"><span><i class="dot" style="background:var(--s1)"></i>single</span><span><i class="dot" style="background:var(--s2)"></i>packed ×10</span></span><span>tokens per second per burst</span></figcaption></figure>
     <figure><div id="conc-lat"></div><figcaption><span class="legend"><span><i class="dot" style="background:var(--s1)"></i>single</span><span><i class="dot" style="background:var(--s2)"></i>packed ×10</span></span><span>p50 latency per burst, log scale</span></figcaption></figure>
@@ -159,8 +161,9 @@ a { color: var(--accent); }
 
 <section>
   <div class="eyebrow">Sustained</div>
-  <h2>Sixty seconds at 256 in flight: a ten-second burst, then a steady 315k tokens/s</h2>
-  <p>The first bucket runs at 480k tokens/s and 163 requests/s with zero 429s. From the second bucket on, the limiter holds the account at roughly 315k tokens/s and 108 requests/s, and every extra request comes back as a 429 that the client retries with backoff. That steady line is the number to plan around, and it is above the 250k tokens/s the docs promise. The tail after 60 s is the client draining retries.</p>
+  <h2>What throughput holds for a full minute</h2>
+  <p>This run kept 256 single requests in flight for 60 seconds. For the first 10 seconds the API accepted 480k tokens/s and 163 requests/s with no 429s. After that it settled at 315k tokens/s and 108 requests/s, and every request above that rate came back as a 429, which the client retried with backoff.</p>
+  <p>Plan a batch job around the 315k figure. It is above the 250k tokens/s in the docs, and the docs also say the limits change without notice. The two small bars after the 60 s mark are retries finishing.</p>
   <figure>
     <div id="sustained"></div>
     <figcaption><span class="legend"><span><i style="background:var(--s1)"></i>tokens/s delivered</span><span><i class="dot" style="background:var(--bad)"></i>429s in the bucket</span></span><span id="sus-total"></span></figcaption>
@@ -169,19 +172,19 @@ a { color: var(--accent); }
 
 <section>
   <div class="eyebrow">Limits</div>
-  <h2>What one call can hold</h2>
+  <h2>How much fits in one request</h2>
   <div class="tablewrap"><table id="limits-table"></table></div>
-  <p class="sub" style="margin-top:12px">Question count is not free in latency once it gets large: 400 Nouls answered in 2.8 s, 1000 in 6.7 s, 2000 in 13.7 s, under load from the other benchmarks. The 255-option cap is a hard validation error, which is why the caveman vocabulary is exactly 255 entries.</p>
+  <p class="sub" style="margin-top:12px">Large question counts do cost time: 400 questions answered in 2.8 s, 1000 in 6.7 s and 2000 in 13.7 s, measured while other benchmarks were running. The 255-option limit is a validation error, not a soft limit, so the caveman vocabulary below has exactly 255 entries.</p>
 </section>
 
 <section>
-  <div class="eyebrow">The job you asked about</div>
-  <h2>Judge 100k traces</h2>
-  <p>Take every trace where a customer might be annoyed, run one request per trace with as many questions as you like, and keep the client at the steady ceiling measured above. Two limits apply at once: tokens per second and requests per second. Whichever binds decides the wall time. Move the sliders.</p>
+  <div class="eyebrow">Cost</div>
+  <h2>What it costs to judge 100k traces</h2>
+  <p>Send one request per trace with as many questions as you need, and keep the client at the steady rate measured above. Two limits apply at the same time, tokens per second and requests per second, and the slower of the two decides the wall time. For 100k traces of 1.9k tokens the requests/s limit is the slower one, so packing two traces per request would cut the time from 15 to 12 minutes. Change the sliders to match your traces.</p>
   <div class="calc">
     <div>
       <div class="row"><label>Traces<input type="range" id="c-traces" min="1000" max="1000000" step="1000" value="100000"></label><input type="number" id="c-traces-n" value="100000"></div>
-      <div class="row"><label>Average tokens per trace<input type="range" id="c-tok" min="200" max="30000" step="100" value="1900"></label><input type="number" id="c-tok-n" value="1900"></div>
+      <div class="row"><label>Average tokens per trace (one request holds at most ~33k tokens, longer traces must be split or trimmed)<input type="range" id="c-tok" min="200" max="30000" step="100" value="1900"></label><input type="number" id="c-tok-n" value="1900"></div>
       <div class="row"><label>Questions per trace<input type="range" id="c-q" min="1" max="50" step="1" value="3"></label><input type="number" id="c-q-n" value="3"></div>
       <div class="row"><label>Ceiling to assume</label><select id="c-ceil"><option value="measured">measured: 315k tok/s, 108 req/s</option><option value="docs">documented: 250k tok/s, 20 req/s</option><option value="burst">burst: 480k tok/s, 163 req/s</option></select></div>
     </div>
@@ -197,31 +200,35 @@ a { color: var(--accent); }
 
 <section>
   <div class="eyebrow">Accuracy</div>
-  <h2>Is the customer annoyed? Jev beats gpt-5-mini, until you pack the request</h2>
-  <p>300 synthetic support conversations generated by gpt-5-mini with a known label: 75 each of explicit annoyance, subtle annoyance (curt replies, "as I said", asks for a human, no complaint words), neutral, and satisfied. One Noul per conversation, one 4-way Choice per conversation, the same Noul with eight conversations packed per request, and gpt-5-mini answering the same question as a baseline.</p>
+  <h2>How accurate is it as a judge</h2>
+  <p>The test set is 300 support conversations written by gpt-5-mini with the label given in the prompt: 75 where the customer complains openly, 75 where the customer is annoyed without saying so (short replies, "as I said", asking for a human), 75 neutral and 75 satisfied. The question for every method is the same: is the customer annoyed at any point.</p>
+  <p>Jev answered it three ways: a yes/no question with one conversation per request, a four-way choice with one conversation per request, and the same yes/no question with eight conversations packed into each request. gpt-5-mini answered the same question in JSON mode as the baseline.</p>
   <figure>
     <div id="acc"></div>
     <figcaption>Accuracy on the binary question at threshold 0.5. Every method catches all 150 annoyed conversations; the misses are neutral conversations flagged as annoyed.</figcaption>
   </figure>
   <div class="tablewrap" style="margin-top:12px"><table id="acc-table"></table></div>
-  <p class="sub" style="margin-top:12px">Packing eight conversations into one request saved 23% of the tokens and lost 11 points of accuracy: the answers for one conversation are leaking from its neighbours. Their docs warn about this ("large state full of irrelevant detail"); it shows up on a 25k-token request already. Raising the single-request threshold to 0.7 takes accuracy to 100% on this set. On the 4-way Choice, Jev separated explicit from subtle annoyance perfectly and confused neutral with satisfied 38 times, which reads as a fault of the generated labels more than of the judge: the "neutral" scripts often end with a thank you.</p>
+  <p style="margin-top:12px">Packing eight conversations into one request saved 23% of the tokens and lost 11 points of accuracy, because the answer for one conversation picks up signal from the conversations next to it. The TypeSafe docs warn that unrelated text in the state lowers accuracy, and here it happened on a 25k-token request. So pack only when cost matters more than accuracy.</p>
+  <p class="sub">With one conversation per request, raising the yes threshold from 0.5 to 0.7 fixes the six false positives and gives 100% on this set. On the four-way choice Jev separated open complaints from subtle annoyance on all 150, and labelled 38 of the 75 neutral conversations as satisfied. The neutral prompt asked for a calm conversation that proceeds normally, and a calm conversation where the agent fixes the problem reads as satisfied, so those two labels overlap by construction.</p>
 </section>
 
 <section>
-  <div class="eyebrow">Toy 1</div>
-  <h2>cavejev: a next-word loop over 255 caveman words</h2>
-  <p>Jev does not generate. So the loop asks a Choice with the whole vocabulary as options, reads the probability of every word, and samples the next one with the same knobs a normal decoder has: temperature, top-k, top-p, a repetition penalty, frequency and presence penalties, no-repeat trigrams, and a ban on the same word twice in a row. Greedy decoding with none of that produces exactly the degeneration you would expect: "do light do light do light do light".</p>
+  <div class="eyebrow">Text generation</div>
+  <h2>cavejev: can Jev write sentences</h2>
+  <p>Jev cannot output text, but a Choice question returns a probability for every option, so a loop can ask "which word comes next" with all 255 caveman words as options and sample the next word from those probabilities. The sampler uses the same controls as a normal language model decoder: temperature, top-k, top-p, a repetition penalty, frequency and presence penalties, no repeated trigrams, and no word twice in a row.</p>
+  <p>Without those controls, greedy decoding repeats itself after a few words, for example "do light do light do light do light" on the question about the sky. The samples below use the full sampler.</p>
   <div class="samples" id="cave-samples"></div>
   <div class="tablewrap" style="margin-top:12px"><table id="cave-table"></table></div>
-  <h3 style="margin-top:20px">Why the hierarchical mode works: a peaked distribution</h3>
-  <p class="sub">The flat 255-way Choice returns a bag of relevant words with the top candidate at 5 to 28%. Asking "which word class comes next" plus one Choice per class in the same request, then multiplying, gives a distribution with a clear winner at every step. Below, the first steps of the hierarchical run for "Why is the sky blue?", top five candidates each, the sampled word in orange.</p>
+  <h3 style="margin-top:20px">Why hier mode gives better sentences</h3>
+  <p class="sub">With all 255 words in one Choice, the top word only gets 5 to 28% of the probability, so sampling picks from many near-equal words and the sentence drifts. The hier mode sends five questions in one request: which word class comes next (noun, verb, adjective, function word or punctuation), and for each class, which word. Multiplying the class probability by the word probability gives one word with 60 to 74% at each step. The boxes below show the first five steps for "Why is the sky blue?", with the top five candidates and the sampled word in orange.</p>
   <div class="steps" id="cave-steps"></div>
 </section>
 
 <section>
-  <div class="eyebrow">Toy 2</div>
-  <h2>codejev: JavaScript through a grammar, so it always compiles</h2>
-  <p>Instead of predicting characters, the generator keeps a stack of pending grammar items and at every cursor asks Jev only about what is valid there: which statement kind, which expression kind, which operator, which in-scope variable, which builtin. Speculative fan-out resolves a whole node per request. Nothing it writes can fail to parse, which is the "push back before it writes something uncompilable" idea taken to the limit. Identifiers are caveman nouns. Sixteen tasks, six candidates each: candidate 0 greedy, the rest sampled at temperature 0.6.</p>
+  <div class="eyebrow">Code generation</div>
+  <h2>codejev: can Jev write code that runs</h2>
+  <p>The generator writes JavaScript one grammar step at a time. It keeps the code so far and a stack of what still has to be written, and at each cursor position it asks Jev to choose only among the options that are valid there: which kind of statement, which kind of expression, which operator, which variable in scope, which builtin function. Because every option is valid, the output always parses, so there is no need to check compilation and push back.</p>
+  <p>One request resolves a whole node, because it carries the main question plus the follow-up questions for every branch, and the code reads only the answers it needs. Variable names come from caveman nouns. Each of the 16 tasks got six attempts: the first with greedy decoding, the other five sampled at temperature 0.6. A node script then runs each program against three tests.</p>
   <div class="tiles" id="code-tiles" style="grid-template-columns: repeat(4, 1fr)"></div>
   <div class="tablewrap" style="margin-top:12px"><table id="code-table"></table></div>
   <h3 style="margin-top:20px">Programs</h3>
@@ -230,15 +237,15 @@ a { color: var(--accent); }
 
 <section>
   <div class="eyebrow">Method and caveats</div>
-  <h2>Read before quoting a number</h2>
+  <h2>Caveats</h2>
   <div class="notes">
-    <p><b>Everything is Go</b>, raw HTTP against <code>POST /v1/systemone</code>, one process on a laptop in Amsterdam. Latency includes about 100 ms of network. The client retries 429 and 5xx with exponential backoff and honours Retry-After.</p>
-    <p><b>Rate limits are dynamic.</b> TypeSafe says so on the models page. The 315k tokens/s steady line and the 480k burst are what this key saw today; they can move.</p>
-    <p><b>Runs overlapped.</b> The limits probe and part of codejev ran while other benchmarks were hammering the endpoint, which inflates some of their latencies (the 1000-Noul call at 6.7 s, the packed probe at 14 s). The latency chart ran alone.</p>
-    <p><b>The dataset is synthetic.</b> gpt-5-mini wrote the conversations with the label in the prompt, so the labels are clean but the distribution is not production traffic. The neutral/satisfied confusion says as much about the generator as the judge.</p>
-    <p><b>Packing is a real trade.</b> It cuts cost, and it also cuts accuracy, on this data by 11 points at eight per request. For a judging job, one trace per request with many questions is the right shape; the questions are nearly free.</p>
-    <p><b>Text generation stays a stunt.</b> Sequential mode is 3 words/s and mostly noise; hierarchical mode answers real questions in short caveman sentences at 2.5 words/s and half a cent per reply; mask-predict is the fastest wall clock and by far the most expensive, because every slot repeats the 255-option list.</p>
-    <p><b>Code generation surprised me.</b> Greedy solves 9 of 16 tasks, best-of-6 solves 12, at $0.055 for 96 programs. The factorial miss is my grammar offering only <code>&lt;</code> as a loop bound. The array tasks fail on <code>Math.max(tribe, ...)</code>: Jev knows which builtin, not that it needs a spread.</p>
+    <p><b>All code is Go</b>, calling <code>POST /v1/systemone</code> over plain HTTP from one process on a laptop in Amsterdam, so every latency includes about 100 ms of network. The client retries 429 and 5xx responses with exponential backoff and respects the Retry-After header.</p>
+    <p><b>The rate limits change.</b> The TypeSafe models page says they adjust without notice while capacity grows, so the 315k tokens/s steady rate and the 480k burst are what this key got on 2026-09-17.</p>
+    <p><b>Some runs overlapped.</b> The limits probe and part of codejev ran while another benchmark was at full load, which inflates a few of their latencies (the 1000-question request at 6.7 s, the packed probe at 14 s). The latency chart ran alone.</p>
+    <p><b>The dataset is synthetic.</b> gpt-5-mini wrote the conversations with the label in the prompt, so the labels are clean but the text is not production traffic. The neutral versus satisfied confusion comes from how the labels were defined.</p>
+    <p><b>Packing trades accuracy for cost.</b> On this data it cut cost by 23% and accuracy by 11 points at eight conversations per request. For a judging job, send one trace per request with many questions, since questions add almost nothing to latency or cost.</p>
+    <p><b>Text generation is a stunt.</b> Sequential mode runs at 3 words/s and produces word salad with an occasional readable sentence. Hier mode answers questions in short caveman sentences at 2.5 words/s for about half a cent per reply. Mask-predict is the fastest at 4 s per reply and the most expensive, because every slot repeats the 255-option list.</p>
+    <p><b>Code generation did better than text.</b> Greedy decoding solves 9 of 16 tasks and best-of-6 solves 12, for $0.055 across 96 programs. The factorial miss comes from the grammar offering only <code>&lt;</code> as a loop bound, and the array tasks fail because the grammar has no spread operator.</p>
   </div>
 </section>
 </main>
@@ -267,12 +274,12 @@ a { color: var(--accent); }
   const steadyTok = steady.reduce((a, b) => a + b.tok, 0) / (steady.length * 10);
   const steadyReq = steady.reduce((a, b) => a + b.req, 0) / (steady.length * 10);
   const lat1k = D.latency.find(r => r.t === 1000 && r.q === 1);
-  const jobTok = 100000 * 1900;
+  const jobTok = 100000 * (1900 + 270 + 3 * 16); // trace + fixed overhead + three questions, same model as the calculator
   const tiles = [
-    ['p50 latency, 1k-token state', fmt(lat1k.p50) + '<small> ms</small>', 'one Noul, sequential, incl. ~100 ms network'],
-    ['steady throughput', k(Math.round(steadyTok)) + '<small> tok/s</small>', fmt(steadyReq, 0) + ' req/s of 1.9k-token traces, 256 in flight'],
-    ['100k traces × 1.9k tokens', money(jobTok / 1e6 * 0.042), fmt(jobTok / 1e6, 0) + 'M input tokens, any number of questions'],
-    ['wall time for that job', secs(Math.max(jobTok / steadyTok, 100000 / steadyReq)), 'at the steady ceiling; ' + (jobTok / steadyTok >= 100000 / steadyReq ? 'tokens/s' : 'requests/s') + ' is the binding limit, pack 2 per request to flip it'],
+    ['p50 latency, 1k-token state', fmt(lat1k.p50) + '<small> ms</small>', 'one yes/no question, one request at a time, about 100 ms of it is network'],
+    ['steady throughput', k(Math.round(steadyTok)) + '<small> tok/s</small>', fmt(steadyReq, 0) + ' req/s of 1.9k-token traces, 256 in flight, held for a minute'],
+    ['100k traces × 1.9k tokens, 3 questions each', money(jobTok / 1e6 * 0.042), fmt(jobTok / 1e6, 0) + 'M input tokens; extra questions add about 16 tokens each'],
+    ['wall time for that job', secs(Math.max(jobTok / steadyTok, 100000 / steadyReq)), 'at the steady rate, limited by ' + (jobTok / steadyTok >= 100000 / steadyReq ? 'tokens/s' : 'requests/s') + '; two traces per request would take ' + secs(Math.max(jobTok / steadyTok, 50000 / steadyReq))],
   ];
   document.getElementById('tiles').innerHTML = tiles.map(t => `<div class="tile"><div class="label">${t[0]}</div><div class="value">${t[1]}</div><div class="note">${t[2]}</div></div>`).join('');
 
@@ -439,9 +446,9 @@ a { color: var(--accent); }
   const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
   const pick = (name, cap) => { const t = C.tasks.find(t => t.name === name); return `<div><pre>${esc(t.code)}</pre><p class="cap">${cap}</p></div>`; };
   document.getElementById('code-samples').innerHTML =
-    pick('total', 'Accumulator over a for-of loop. Jev chose "let", named the variable "sun", chose "for_of" over "tribe", then "assign" with a binary "+". Every choice was a Choice.') +
-    pick('countBig', 'An if inside a loop, comparison operator and threshold both picked from the options.') +
-    pick('factorial', 'Off by one: the grammar only offers "<" as the loop bound. Jev picked the right shape; the grammar author did not offer "<=".') +
-    pick('biggest', 'The failure mode on arrays: Jev picks Math.max but the grammar has no spread, and nothing in the options can express it.');
+    pick('total', 'Sum over a for-of loop. Jev chose a let statement, named the variable sun, chose a for-of loop over tribe, then an assignment with a plus.') +
+    pick('countBig', 'An if inside a loop. Jev picked the comparison operator and the threshold 10 from the options.') +
+    pick('factorial', 'Off by one. The grammar only offers < as the loop condition, so the loop stops one step early. The shape of the program is right.') +
+    pick('biggest', 'How the array tasks fail: Jev picks Math.max, but the grammar has no spread operator, so no option can express Math.max(...tribe).');
 })();
 </script>
