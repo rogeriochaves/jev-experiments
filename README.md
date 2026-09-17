@@ -1,7 +1,12 @@
 # jev-experiments
 
+**Results page: https://claude.ai/code/artifact/f00ee126-9554-4e2f-b2e7-1fc86c066aa9**
+
 Benchmarks and toys built on TypeSafe's Jev (jev-1.13), a model that returns
 typed judgments (Choice, Noul, Score) with probabilities instead of text.
+The page above has the measured latency, throughput, limits, judge accuracy,
+a cost calculator for judging 100k traces, and the caveman text and code
+generation samples.
 
 Everything is Go. `internal/jev` is a small client over `POST /v1/systemone`
 with retries and counters. Put the key in `.env` as `TYPESAFE_API_KEY=...`.
