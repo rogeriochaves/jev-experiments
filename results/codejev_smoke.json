@@ -1,0 +1,402 @@
+{
+ "any_pass": 1,
+ "greedy_pass": 1,
+ "input_tokens": 28452,
+ "n": 4,
+ "ran_at": "2026-09-17T17:22:10.272694+02:00",
+ "tasks": [
+  {
+   "name": "add",
+   "description": "Return the sum of the two numbers.",
+   "tests": 3,
+   "candidates": [
+    {
+     "seed": 0,
+     "temperature": 0,
+     "code": "function add(rock, fire) {\n  return (rock + fire);\n}",
+     "parses": true,
+     "passed": 3,
+     "requests": 5,
+     "input_tokens": 7113,
+     "wall_s": 2.127486667,
+     "truncated": false,
+     "trace": [
+      {
+       "role": "statement",
+       "chosen": "return",
+       "prob": 1,
+       "probs": {
+        "call": 0,
+        "end_block": 0,
+        "for_of": 0,
+        "for_range": 0,
+        "if": 0,
+        "let": 0,
+        "return": 1
+       }
+      },
+      {
+       "role": "the value returned by the function",
+       "chosen": "binary",
+       "prob": 1,
+       "probs": {
+        "binary": 1,
+        "builtin": 0,
+        "false": 0,
+        "index": 0,
+        "method": 0,
+        "negate": 0,
+        "not": 0,
+        "number": 0,
+        "string": 0,
+        "true": 0,
+        "variable": 0
+       }
+      },
+      {
+       "role": "the left side of `+` in the value returned by the function",
+       "chosen": "variable",
+       "prob": 0.96,
+       "probs": {
+        "binary": 0.04,
+        "builtin": 0,
+        "false": 0,
+        "index": 0,
+        "method": 0,
+        "negate": 0,
+        "not": 0,
+        "number": 0,
+        "string": 0,
+        "true": 0,
+        "variable": 0.96
+       }
+      },
+      {
+       "role": "the right side of `+` in the value returned by the function",
+       "chosen": "variable",
+       "prob": 0.99,
+       "probs": {
+        "binary": 0.01,
+        "builtin": 0,
+        "false": 0,
+        "index": 0,
+        "method": 0,
+        "negate": 0,
+        "not": 0,
+        "number": 0,
+        "string": 0,
+        "true": 0,
+        "variable": 0.99
+       }
+      },
+      {
+       "role": "statement",
+       "chosen": "end_block",
+       "prob": 0.96,
+       "probs": {
+        "call": 0,
+        "end_block": 0.96,
+        "for_of": 0,
+        "for_range": 0,
+        "if": 0,
+        "let": 0,
+        "return": 0.04
+       }
+      }
+     ]
+    },
+    {
+     "seed": 1,
+     "temperature": 0.6,
+     "code": "function add(rock, fire) {\n  return (rock + fire);\n}",
+     "parses": true,
+     "passed": 3,
+     "requests": 5,
+     "input_tokens": 7113,
+     "wall_s": 1.9545041250000001,
+     "truncated": false,
+     "trace": [
+      {
+       "role": "statement",
+       "chosen": "return",
+       "prob": 1,
+       "probs": {
+        "call": 0,
+        "end_block": 0,
+        "for_of": 0,
+        "for_range": 0,
+        "if": 0,
+        "let": 0,
+        "return": 1
+       }
+      },
+      {
+       "role": "the value returned by the function",
+       "chosen": "binary",
+       "prob": 1,
+       "probs": {
+        "binary": 1,
+        "builtin": 0,
+        "false": 0,
+        "index": 0,
+        "method": 0,
+        "negate": 0,
+        "not": 0,
+        "number": 0,
+        "string": 0,
+        "true": 0,
+        "variable": 0
+       }
+      },
+      {
+       "role": "the left side of `+` in the value returned by the function",
+       "chosen": "variable",
+       "prob": 0.96,
+       "probs": {
+        "binary": 0.04,
+        "builtin": 0,
+        "false": 0,
+        "index": 0,
+        "method": 0,
+        "negate": 0,
+        "not": 0,
+        "number": 0,
+        "string": 0,
+        "true": 0,
+        "variable": 0.96
+       }
+      },
+      {
+       "role": "the right side of `+` in the value returned by the function",
+       "chosen": "variable",
+       "prob": 1,
+       "probs": {
+        "binary": 0,
+        "builtin": 0,
+        "false": 0,
+        "index": 0,
+        "method": 0,
+        "negate": 0,
+        "not": 0,
+        "number": 0,
+        "string": 0,
+        "true": 0,
+        "variable": 1
+       }
+      },
+      {
+       "role": "statement",
+       "chosen": "end_block",
+       "prob": 0.97,
+       "probs": {
+        "call": 0,
+        "end_block": 0.97,
+        "for_of": 0,
+        "for_range": 0,
+        "if": 0,
+        "let": 0,
+        "return": 0.03
+       }
+      }
+     ]
+    },
+    {
+     "seed": 2,
+     "temperature": 0.6,
+     "code": "function add(rock, fire) {\n  return (rock + fire);\n}",
+     "parses": true,
+     "passed": 3,
+     "requests": 5,
+     "input_tokens": 7113,
+     "wall_s": 2.144673,
+     "truncated": false,
+     "trace": [
+      {
+       "role": "statement",
+       "chosen": "return",
+       "prob": 1,
+       "probs": {
+        "call": 0,
+        "end_block": 0,
+        "for_of": 0,
+        "for_range": 0,
+        "if": 0,
+        "let": 0,
+        "return": 1
+       }
+      },
+      {
+       "role": "the value returned by the function",
+       "chosen": "binary",
+       "prob": 1,
+       "probs": {
+        "binary": 1,
+        "builtin": 0,
+        "false": 0,
+        "index": 0,
+        "method": 0,
+        "negate": 0,
+        "not": 0,
+        "number": 0,
+        "string": 0,
+        "true": 0,
+        "variable": 0
+       }
+      },
+      {
+       "role": "the left side of `+` in the value returned by the function",
+       "chosen": "variable",
+       "prob": 0.96,
+       "probs": {
+        "binary": 0.04,
+        "builtin": 0,
+        "false": 0,
+        "index": 0,
+        "method": 0,
+        "negate": 0,
+        "not": 0,
+        "number": 0,
+        "string": 0,
+        "true": 0,
+        "variable": 0.96
+       }
+      },
+      {
+       "role": "the right side of `+` in the value returned by the function",
+       "chosen": "variable",
+       "prob": 0.99,
+       "probs": {
+        "binary": 0.01,
+        "builtin": 0,
+        "false": 0,
+        "index": 0,
+        "method": 0,
+        "negate": 0,
+        "not": 0,
+        "number": 0,
+        "string": 0,
+        "true": 0,
+        "variable": 0.99
+       }
+      },
+      {
+       "role": "statement",
+       "chosen": "end_block",
+       "prob": 0.96,
+       "probs": {
+        "call": 0,
+        "end_block": 0.96,
+        "for_of": 0,
+        "for_range": 0,
+        "if": 0,
+        "let": 0,
+        "return": 0.04
+       }
+      }
+     ]
+    },
+    {
+     "seed": 3,
+     "temperature": 0.6,
+     "code": "function add(rock, fire) {\n  return (rock + fire);\n}",
+     "parses": true,
+     "passed": 3,
+     "requests": 5,
+     "input_tokens": 7113,
+     "wall_s": 2.214818375,
+     "truncated": false,
+     "trace": [
+      {
+       "role": "statement",
+       "chosen": "return",
+       "prob": 1,
+       "probs": {
+        "call": 0,
+        "end_block": 0,
+        "for_of": 0,
+        "for_range": 0,
+        "if": 0,
+        "let": 0,
+        "return": 1
+       }
+      },
+      {
+       "role": "the value returned by the function",
+       "chosen": "binary",
+       "prob": 1,
+       "probs": {
+        "binary": 1,
+        "builtin": 0,
+        "false": 0,
+        "index": 0,
+        "method": 0,
+        "negate": 0,
+        "not": 0,
+        "number": 0,
+        "string": 0,
+        "true": 0,
+        "variable": 0
+       }
+      },
+      {
+       "role": "the left side of `+` in the value returned by the function",
+       "chosen": "variable",
+       "prob": 0.97,
+       "probs": {
+        "binary": 0.03,
+        "builtin": 0,
+        "false": 0,
+        "index": 0,
+        "method": 0,
+        "negate": 0,
+        "not": 0,
+        "number": 0,
+        "string": 0,
+        "true": 0,
+        "variable": 0.97
+       }
+      },
+      {
+       "role": "the right side of `+` in the value returned by the function",
+       "chosen": "variable",
+       "prob": 0.99,
+       "probs": {
+        "binary": 0.01,
+        "builtin": 0,
+        "false": 0,
+        "index": 0,
+        "method": 0,
+        "negate": 0,
+        "not": 0,
+        "number": 0,
+        "string": 0,
+        "true": 0,
+        "variable": 0.99
+       }
+      },
+      {
+       "role": "statement",
+       "chosen": "end_block",
+       "prob": 0.96,
+       "probs": {
+        "call": 0,
+        "end_block": 0.96,
+        "for_of": 0,
+        "for_range": 0,
+        "if": 0,
+        "let": 0,
+        "return": 0.04
+       }
+      }
+     ]
+    }
+   ],
+   "greedy_pass": true,
+   "any_pass": true,
+   "best_code": "function add(rock, fire) {\n  return (rock + fire);\n}",
+   "wall_s": 2.302734
+  }
+ ],
+ "temperature": 0.6,
+ "wall_s": 2.303712791
+}

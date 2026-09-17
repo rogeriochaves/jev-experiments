@@ -1,0 +1,12 @@
+single    conc    8    64/64   ok  wall    3.1s    20.7 req/s     20.7 traces/s     60.5k tok/s  p50    274ms  p95    924ms  429s 0  retries 0
+single    conc   32   192/192  ok  wall    3.1s    61.5 req/s     61.5 traces/s    180.4k tok/s  p50    292ms  p95   1349ms  429s 0  retries 0
+single    conc   64   256/256  ok  wall    3.4s    74.5 req/s     74.5 traces/s    218.6k tok/s  p50    464ms  p95   2048ms  429s 0  retries 0
+single    conc  128   384/384  ok  wall    3.8s   100.9 req/s    100.9 traces/s    295.9k tok/s  p50    883ms  p95   1777ms  429s 0  retries 0
+single    conc  256   512/512  ok  wall    4.6s   111.9 req/s    111.9 traces/s    328.4k tok/s  p50   1529ms  p95   3107ms  429s 0  retries 0
+single    conc  512  1024/1024 ok  wall    6.4s   160.1 req/s    160.1 traces/s    469.5k tok/s  p50   2094ms  p95   5574ms  429s 0  retries 0
+packed10  conc    8    32/32   ok  wall    3.8s     8.4 req/s     84.0 traces/s    229.4k tok/s  p50    655ms  p95   1798ms  429s 0  retries 0
+packed10  conc   16    48/48   ok  wall    5.4s     8.9 req/s     89.1 traces/s    243.2k tok/s  p50   1360ms  p95   2761ms  429s 0  retries 0
+packed10  conc   32    64/64   ok  wall    5.1s    12.6 req/s    125.6 traces/s    342.9k tok/s  p50   1293ms  p95   3992ms  429s 0  retries 0
+packed10  conc   64   128/128  ok  wall   10.5s    12.2 req/s    121.6 traces/s    332.0k tok/s  p50   4091ms  p95   5485ms  429s 9  retries 9
+packed10  conc  128   256/256  ok  wall   30.1s     8.5 req/s     84.9 traces/s    231.8k tok/s  p50  10673ms  p95  22814ms  429s 170  retries 172
+wrote results/concurrency.json

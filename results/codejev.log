@@ -1,0 +1,96 @@
+add          greedy true  pass@6 true  (6/6 candidates pass)  30 req   42678 tok    3.7s
+    function add(rock, fire) {
+      return (rock + fire);
+    }
+bigger       greedy true  pass@6 true  (6/6 candidates pass)  57 req   77094 tok   15.4s
+    function bigger(rock, fire) {
+      return Math.max(rock, fire);
+    }
+isEven       greedy false  pass@6 true  (3/6 candidates pass)  38 req   55008 tok    5.8s
+    function isEven(rock) {
+      return ((rock % 2) === 0);
+    }
+absolute     greedy true  pass@6 true  (6/6 candidates pass)  24 req   32208 tok    4.8s
+    function absolute(rock) {
+      return Math.abs(rock);
+    }
+shout        greedy true  pass@6 true  (6/6 candidates pass)  18 req   23178 tok    3.0s
+    function shout(word) {
+      return word.toUpperCase();
+    }
+howLong      greedy true  pass@6 true  (6/6 candidates pass)  18 req   23088 tok   20.3s
+    function howLong(word) {
+      return word.length;
+    }
+first        greedy false  pass@6 true  (1/6 candidates pass)  32 req   43670 tok    2.3s
+    function first(tribe) {
+      return tribe[0];
+    }
+last         greedy false  pass@6 false  (0/6 candidates pass)  29 req   40357 tok    1.6s
+    function last(tribe) {
+      return tribe[-(1)];
+    }
+total        greedy true  pass@6 true  (2/6 candidates pass)  104 req  147075 tok    8.8s
+    function total(tribe) {
+      let sun = 0;
+      for (const stick of tribe) {
+        sun = (sun + stick);
+      }
+      return sun;
+    }
+countBig     greedy true  pass@6 true  (3/6 candidates pass)  141 req  203872 tok   11.0s
+    function countBig(tribe) {
+      let mammoth = 0;
+      for (const hunt of tribe) {
+        if ((hunt > 10)) {
+          mammoth = (mammoth + 1);
+        }
+      }
+      return mammoth;
+    }
+has          greedy true  pass@6 true  (6/6 candidates pass)  24 req   33294 tok    1.3s
+    function has(tribe, rock) {
+      return tribe.includes(rock);
+    }
+factorial    greedy false  pass@6 false  (0/6 candidates pass)  94 req  135403 tok    7.7s
+    function factorial(rock) {
+      let bear = 1;
+      for (let stick = 1; stick < rock; stick++) {
+        bear = (bear * stick);
+      }
+      return bear;
+    }
+clamp        greedy false  pass@6 true  (3/6 candidates pass)  89 req  126004 tok    6.8s
+    function clamp(rock, low, high) {
+      if ((rock < low)) {
+        return low;
+      } else {
+        if ((rock > high)) {
+          return high;
+        }
+        return rock;
+      }
+    }
+sign         greedy true  pass@6 true  (2/6 candidates pass)  154 req  210762 tok   17.6s
+    function sign(rock) {
+      if ((rock > 0)) {
+        return 1;
+      } else {
+        if ((rock < 0)) {
+          return -1;
+        } else {
+          return 0;
+        }
+      }
+    }
+reverseWord  greedy false  pass@6 false  (0/6 candidates pass)  33 req   43849 tok    2.1s
+    function reverseWord(word) {
+      return word.split("");
+      return word.reverse();
+    }
+biggest      greedy false  pass@6 false  (0/6 candidates pass)  62 req   84333 tok    4.8s
+    function biggest(tribe) {
+      return Math.max(tribe, tribe.length);
+    }
+
+16 tasks: greedy pass 9, pass@6 12, 117s wall, 1321873 input tokens, $0.0555

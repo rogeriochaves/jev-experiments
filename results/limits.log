@@ -1,0 +1,17 @@
+max state: ~171406 chars = 33001 input tokens (single noul)
+50 nouls ok: 2117 input tokens, 812 ms
+100 nouls ok: 3217 input tokens, 2380 ms
+200 nouls ok: 5517 input tokens, 2543 ms
+400 nouls ok: 10117 input tokens, 2818 ms
+800 nouls ok: 19317 input tokens, 3280 ms
+1000 nouls ok: 23917 input tokens, 6696 ms
+1500 nouls ok: 35917 input tokens, 15323 ms
+2000 nouls ok: 47917 input tokens, 13671 ms
+3000 nouls: HTTP 400: {"detail":{"error_type":"max_tokens_exceeded"}}
+256 options: HTTP 400: {"detail":"Too many choices. Must have at most 255 choices."}
+255 options ok: 2461 input tokens, 2617 ms
+pack 8 ok: 21911 input tokens, 14814 ms
+pack 10 ok: 27326 input tokens, 14544 ms
+pack 12 ok: 32750 input tokens, 13284 ms
+pack 14: HTTP 400: {"detail":{"error_type":"max_tokens_exceeded"}}
+wrote results/limits.json

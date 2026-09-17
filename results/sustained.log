@@ -1,0 +1,10 @@
+t=  0s  162.8 req/s    477.5k tok/s  429s   0  p50   1362ms  p95   2272ms
+t= 10s  108.4 req/s    317.8k tok/s  429s 574  p50    690ms  p95   5862ms
+t= 20s  107.2 req/s    314.4k tok/s  429s 743  p50    701ms  p95  11009ms
+t= 30s  107.2 req/s    314.3k tok/s  429s 639  p50    697ms  p95   6576ms
+t= 40s  105.9 req/s    310.7k tok/s  429s 668  p50    597ms  p95   6719ms
+t= 50s  111.0 req/s    325.5k tok/s  429s 698  p50    522ms  p95   6822ms
+t= 60s   24.7 req/s     72.4k tok/s  429s 475  p50   4660ms  p95  31098ms
+t= 70s    0.9 req/s      2.6k tok/s  429s  41  p50  24461ms  p95  56461ms
+total: 7281 req in 74s, 98.0 req/s, 287.3k tok/s, 98.0 traces/s, 3838 429s, $0.897
+wrote results/sustained_c256_p1.json

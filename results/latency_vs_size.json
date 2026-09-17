@@ -1,0 +1,389 @@
+{
+ "ran_at": "2026-09-17T17:16:06.700273+02:00",
+ "rows": [
+  {
+   "target_tokens": 100,
+   "questions": 1,
+   "input_tokens": 372,
+   "chars": 373,
+   "latency_p50_ms": 255.881167,
+   "latency_min_ms": 232.423042,
+   "latency_max_ms": 293.283833,
+   "latencies_ms": [
+    293.283833,
+    271.458208,
+    255.881167,
+    251.749709,
+    232.423042
+   ]
+  },
+  {
+   "target_tokens": 100,
+   "questions": 10,
+   "input_tokens": 514,
+   "chars": 373,
+   "latency_p50_ms": 275.213542,
+   "latency_min_ms": 214.054,
+   "latency_max_ms": 321.669083,
+   "latencies_ms": [
+    275.213542,
+    282.100792,
+    214.054,
+    254.007917,
+    321.669083
+   ]
+  },
+  {
+   "target_tokens": 100,
+   "questions": 50,
+   "input_tokens": 1394,
+   "chars": 373,
+   "latency_p50_ms": 246.901083,
+   "latency_min_ms": 237.671708,
+   "latency_max_ms": 332.967333,
+   "latencies_ms": [
+    237.671708,
+    277.965417,
+    246.901083,
+    244.533667,
+    332.967333
+   ]
+  },
+  {
+   "target_tokens": 500,
+   "questions": 1,
+   "input_tokens": 697,
+   "chars": 1722,
+   "latency_p50_ms": 254.338292,
+   "latency_min_ms": 235.33,
+   "latency_max_ms": 281.481292,
+   "latencies_ms": [
+    260.168541,
+    235.33,
+    281.481292,
+    244.187625,
+    254.338292
+   ]
+  },
+  {
+   "target_tokens": 500,
+   "questions": 10,
+   "input_tokens": 839,
+   "chars": 1722,
+   "latency_p50_ms": 262.11425,
+   "latency_min_ms": 225.644791,
+   "latency_max_ms": 506.396,
+   "latencies_ms": [
+    225.644791,
+    261.230042,
+    506.396,
+    262.11425,
+    275.000584
+   ]
+  },
+  {
+   "target_tokens": 500,
+   "questions": 50,
+   "input_tokens": 1719,
+   "chars": 1722,
+   "latency_p50_ms": 252.3815,
+   "latency_min_ms": 251.193458,
+   "latency_max_ms": 271.611834,
+   "latencies_ms": [
+    252.3815,
+    269.324875,
+    251.193458,
+    251.543083,
+    271.611834
+   ]
+  },
+  {
+   "target_tokens": 1000,
+   "questions": 1,
+   "input_tokens": 1096,
+   "chars": 3479,
+   "latency_p50_ms": 274.582625,
+   "latency_min_ms": 228.440917,
+   "latency_max_ms": 301.996459,
+   "latencies_ms": [
+    293.204709,
+    253.59325,
+    228.440917,
+    274.582625,
+    301.996459
+   ]
+  },
+  {
+   "target_tokens": 1000,
+   "questions": 10,
+   "input_tokens": 1238,
+   "chars": 3479,
+   "latency_p50_ms": 265.288333,
+   "latency_min_ms": 224.401708,
+   "latency_max_ms": 273.020291,
+   "latencies_ms": [
+    224.401708,
+    265.288333,
+    257.843083,
+    265.894417,
+    273.020291
+   ]
+  },
+  {
+   "target_tokens": 1000,
+   "questions": 50,
+   "input_tokens": 2118,
+   "chars": 3479,
+   "latency_p50_ms": 271.600125,
+   "latency_min_ms": 251.917166,
+   "latency_max_ms": 317.113917,
+   "latencies_ms": [
+    317.113917,
+    271.600125,
+    268.846041,
+    282.202667,
+    251.917166
+   ]
+  },
+  {
+   "target_tokens": 2000,
+   "questions": 1,
+   "input_tokens": 1880,
+   "chars": 6867,
+   "latency_p50_ms": 232.039959,
+   "latency_min_ms": 226.459042,
+   "latency_max_ms": 305.052583,
+   "latencies_ms": [
+    229.316584,
+    226.459042,
+    232.039959,
+    257.583708,
+    305.052583
+   ]
+  },
+  {
+   "target_tokens": 2000,
+   "questions": 10,
+   "input_tokens": 2022,
+   "chars": 6867,
+   "latency_p50_ms": 266.757166,
+   "latency_min_ms": 221.153958,
+   "latency_max_ms": 283.415083,
+   "latencies_ms": [
+    221.153958,
+    266.757166,
+    264.794166,
+    283.415083,
+    280.871625
+   ]
+  },
+  {
+   "target_tokens": 2000,
+   "questions": 50,
+   "input_tokens": 2902,
+   "chars": 6867,
+   "latency_p50_ms": 245.787584,
+   "latency_min_ms": 229.392959,
+   "latency_max_ms": 540.512833,
+   "latencies_ms": [
+    240.50725,
+    229.392959,
+    271.495625,
+    540.512833,
+    245.787584
+   ]
+  },
+  {
+   "target_tokens": 4000,
+   "questions": 1,
+   "input_tokens": 3494,
+   "chars": 13771,
+   "latency_p50_ms": 261.254375,
+   "latency_min_ms": 238.342333,
+   "latency_max_ms": 306.437292,
+   "latencies_ms": [
+    261.254375,
+    254.928416,
+    275.350416,
+    306.437292,
+    238.342333
+   ]
+  },
+  {
+   "target_tokens": 4000,
+   "questions": 10,
+   "input_tokens": 3636,
+   "chars": 13771,
+   "latency_p50_ms": 244.283,
+   "latency_min_ms": 239.623208,
+   "latency_max_ms": 291.226459,
+   "latencies_ms": [
+    243.206333,
+    291.226459,
+    251.345333,
+    239.623208,
+    244.283
+   ]
+  },
+  {
+   "target_tokens": 4000,
+   "questions": 50,
+   "input_tokens": 4516,
+   "chars": 13771,
+   "latency_p50_ms": 264.479834,
+   "latency_min_ms": 247.298042,
+   "latency_max_ms": 277.873875,
+   "latencies_ms": [
+    274.036458,
+    259.253708,
+    264.479834,
+    247.298042,
+    277.873875
+   ]
+  },
+  {
+   "target_tokens": 8000,
+   "questions": 1,
+   "input_tokens": 6653,
+   "chars": 27471,
+   "latency_p50_ms": 326.133916,
+   "latency_min_ms": 252.757334,
+   "latency_max_ms": 456.772,
+   "latencies_ms": [
+    328.916333,
+    456.772,
+    258.614708,
+    252.757334,
+    326.133916
+   ]
+  },
+  {
+   "target_tokens": 8000,
+   "questions": 10,
+   "input_tokens": 6795,
+   "chars": 27471,
+   "latency_p50_ms": 276.355792,
+   "latency_min_ms": 246.075333,
+   "latency_max_ms": 419.031667,
+   "latencies_ms": [
+    326.625792,
+    248.878375,
+    419.031667,
+    246.075333,
+    276.355792
+   ]
+  },
+  {
+   "target_tokens": 8000,
+   "questions": 50,
+   "input_tokens": 7675,
+   "chars": 27471,
+   "latency_p50_ms": 316.5885,
+   "latency_min_ms": 266.958166,
+   "latency_max_ms": 771.049958,
+   "latencies_ms": [
+    279.024041,
+    771.049958,
+    336.8955,
+    316.5885,
+    266.958166
+   ]
+  },
+  {
+   "target_tokens": 16000,
+   "questions": 1,
+   "input_tokens": 13100,
+   "chars": 55036,
+   "latency_p50_ms": 327.463333,
+   "latency_min_ms": 285.139417,
+   "latency_max_ms": 442.794208,
+   "latencies_ms": [
+    285.139417,
+    363.813333,
+    327.463333,
+    442.794208,
+    298.99675
+   ]
+  },
+  {
+   "target_tokens": 16000,
+   "questions": 10,
+   "input_tokens": 13242,
+   "chars": 55036,
+   "latency_p50_ms": 315.6345,
+   "latency_min_ms": 301.176416,
+   "latency_max_ms": 378.923958,
+   "latencies_ms": [
+    378.923958,
+    315.6345,
+    335.209958,
+    301.176416,
+    310.312458
+   ]
+  },
+  {
+   "target_tokens": 16000,
+   "questions": 50,
+   "input_tokens": 14122,
+   "chars": 55036,
+   "latency_p50_ms": 342.685625,
+   "latency_min_ms": 306.47425,
+   "latency_max_ms": 684.89325,
+   "latencies_ms": [
+    306.47425,
+    309.052292,
+    342.685625,
+    359.612084,
+    684.89325
+   ]
+  },
+  {
+   "target_tokens": 30000,
+   "questions": 1,
+   "input_tokens": 24318,
+   "chars": 103024,
+   "latency_p50_ms": 426.104666,
+   "latency_min_ms": 384.236,
+   "latency_max_ms": 449.347292,
+   "latencies_ms": [
+    426.104666,
+    449.347292,
+    391.84275,
+    384.236,
+    440.8115
+   ]
+  },
+  {
+   "target_tokens": 30000,
+   "questions": 10,
+   "input_tokens": 24460,
+   "chars": 103024,
+   "latency_p50_ms": 422.972833,
+   "latency_min_ms": 393.459541,
+   "latency_max_ms": 478.332,
+   "latencies_ms": [
+    416.102791,
+    422.972833,
+    478.332,
+    393.459541,
+    448.483833
+   ]
+  },
+  {
+   "target_tokens": 30000,
+   "questions": 50,
+   "input_tokens": 25340,
+   "chars": 103024,
+   "latency_p50_ms": 463.027792,
+   "latency_min_ms": 392.376375,
+   "latency_max_ms": 836.759042,
+   "latencies_ms": [
+    463.027792,
+    522.199667,
+    392.376375,
+    426.882167,
+    836.759042
+   ]
+  }
+ ]
+}

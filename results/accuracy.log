@@ -1,0 +1,12 @@
+300 conversations
+single: 300 requests in 3.6s, 487659 tokens, $0.0205
+packed8: 38 requests in 1.3s, 377767 tokens, $0.0159
+gpt-5-mini: 300 requests in 65.1s, 351727 tokens
+single@0.5   acc 0.980  precision 0.962  recall 1.000  per-label map[annoyed_explicit:1 annoyed_subtle:1 neutral:0.92 satisfied:1]
+packed@0.5   acc 0.873  precision 0.829  recall 0.940  per-label map[annoyed_explicit:0.9333333333333333 annoyed_subtle:0.9466666666666667 neutral:0.7733333333333333 satisfied:0.84]
+choice       acc 0.997  precision 0.993  recall 1.000  per-label map[annoyed_explicit:1 annoyed_subtle:1 neutral:0.9866666666666667 satisfied:1]
+gpt-5-mini   acc 0.930  precision 0.877  recall 1.000  per-label map[annoyed_explicit:1 annoyed_subtle:1 neutral:0.8266666666666667 satisfied:0.8933333333333333]
+best single threshold 0.70 -> acc 1.000
+single vs packed: label agreement 0.887, mean |diff| 0.139
+4-way confusion (true -> predicted): map[annoyed_explicit:map[annoyed_explicit:75] annoyed_subtle:map[annoyed_subtle:75] neutral:map[annoyed_subtle:1 neutral:36 satisfied:38] satisfied:map[satisfied:75]]
+wrote results/accuracy.json

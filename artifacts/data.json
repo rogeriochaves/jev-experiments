@@ -1,0 +1,2617 @@
+{
+  "accuracy": {
+    "n": 300,
+    "metrics": {
+      "gpt_5_mini": {
+        "accuracy": 0.93,
+        "fn": 0,
+        "fp": 21,
+        "per_label_accuracy": {
+          "annoyed_explicit": 1,
+          "annoyed_subtle": 1,
+          "neutral": 0.8266666666666667,
+          "satisfied": 0.8933333333333333
+        },
+        "precision": 0.8771929824561403,
+        "recall": 1,
+        "tn": 129,
+        "tp": 150
+      },
+      "packed_noul_0.5": {
+        "accuracy": 0.8733333333333333,
+        "fn": 9,
+        "fp": 29,
+        "per_label_accuracy": {
+          "annoyed_explicit": 0.9333333333333333,
+          "annoyed_subtle": 0.9466666666666667,
+          "neutral": 0.7733333333333333,
+          "satisfied": 0.84
+        },
+        "precision": 0.8294117647058824,
+        "recall": 0.94,
+        "tn": 121,
+        "tp": 141
+      },
+      "single_choice": {
+        "accuracy": 0.9966666666666667,
+        "fn": 0,
+        "fp": 1,
+        "per_label_accuracy": {
+          "annoyed_explicit": 1,
+          "annoyed_subtle": 1,
+          "neutral": 0.9866666666666667,
+          "satisfied": 1
+        },
+        "precision": 0.9933774834437086,
+        "recall": 1,
+        "tn": 149,
+        "tp": 150
+      },
+      "single_noul_0.5": {
+        "accuracy": 0.98,
+        "fn": 0,
+        "fp": 6,
+        "per_label_accuracy": {
+          "annoyed_explicit": 1,
+          "annoyed_subtle": 1,
+          "neutral": 0.92,
+          "satisfied": 1
+        },
+        "precision": 0.9615384615384616,
+        "recall": 1,
+        "tn": 144,
+        "tp": 150
+      }
+    },
+    "best_t": 0.7000000000000001,
+    "best_acc": 1,
+    "agreement": 0.8866666666666667,
+    "single_wall": 3.632566041,
+    "single_tokens": 487659,
+    "single_cost": 0.020481678000000003,
+    "packed_wall": 1.254448791,
+    "packed_tokens": 377767,
+    "packed_cost": 0.015866214000000003,
+    "gpt_wall": 65.1193745,
+    "gpt_tokens": 351727,
+    "confusion": {
+      "annoyed_explicit": {
+        "annoyed_explicit": 75
+      },
+      "annoyed_subtle": {
+        "annoyed_subtle": 75
+      },
+      "neutral": {
+        "annoyed_subtle": 1,
+        "neutral": 36,
+        "satisfied": 38
+      },
+      "satisfied": {
+        "satisfied": 75
+      }
+    }
+  },
+  "cavejev_hier": [
+    {
+      "prompt": "Why is the sky blue?",
+      "text": "Sky is blue. Because sun light color.",
+      "words": 9,
+      "req": 10,
+      "tok": 52956,
+      "wall": 3.550177209,
+      "steps": [
+        {
+          "word": "sky",
+          "prob": 0.5472,
+          "top5": [
+            {
+              "word": "sky",
+              "prob": 0.5472
+            },
+            {
+              "word": "is",
+              "prob": 0.12460000000000002
+            },
+            {
+              "word": "sun",
+              "prob": 0.08360000000000001
+            },
+            {
+              "word": "light",
+              "prob": 0.08360000000000001
+            },
+            {
+              "word": "because",
+              "prob": 0.0402
+            }
+          ]
+        },
+        {
+          "word": "is",
+          "prob": 0.756,
+          "top5": [
+            {
+              "word": "is",
+              "prob": 0.756
+            },
+            {
+              "word": "because",
+              "prob": 0.04050000000000001
+            },
+            {
+              "word": "blue",
+              "prob": 0.037500000000000006
+            },
+            {
+              "word": "light",
+              "prob": 0.0185
+            },
+            {
+              "word": "make",
+              "prob": 0.0168
+            }
+          ]
+        },
+        {
+          "word": "blue",
+          "prob": 0.7623,
+          "top5": [
+            {
+              "word": "blue",
+              "prob": 0.7623
+            },
+            {
+              "word": "is",
+              "prob": 0.1701
+            },
+            {
+              "word": "look",
+              "prob": 0.0126
+            },
+            {
+              "word": "seem",
+              "prob": 0.0084
+            },
+            {
+              "word": "because",
+              "prob": 0.0084
+            }
+          ]
+        },
+        {
+          "word": ".",
+          "prob": 0.11199999999999999,
+          "top5": [
+            {
+              "word": "because",
+              "prob": 0.279
+            },
+            {
+              "word": "is",
+              "prob": 0.27299999999999996
+            },
+            {
+              "word": ".",
+              "prob": 0.11199999999999999
+            },
+            {
+              "word": "light",
+              "prob": 0.045500000000000006
+            },
+            {
+              "word": "sun",
+              "prob": 0.041600000000000005
+            }
+          ]
+        },
+        {
+          "word": "because",
+          "prob": 0.25760000000000005,
+          "top5": [
+            {
+              "word": "is",
+              "prob": 0.276
+            },
+            {
+              "word": "because",
+              "prob": 0.25760000000000005
+            },
+            {
+              "word": ".",
+              "prob": 0.144
+            },
+            {
+              "word": "light",
+              "prob": 0.045500000000000006
+            },
+            {
+              "word": "sun",
+              "prob": 0.041600000000000005
+            }
+          ]
+        },
+        {
+          "word": "sun",
+          "prob": 0.21730000000000002,
+          "top5": [
+            {
+              "word": "sun",
+              "prob": 0.21730000000000002
+            },
+            {
+              "word": "light",
+              "prob": 0.20670000000000002
+            },
+            {
+              "word": "is",
+              "prob": 0.10070000000000001
+            },
+            {
+              "word": "it",
+              "prob": 0.065
+            },
+            {
+              "word": "because",
+              "prob": 0.045000000000000005
+            }
+          ]
+        },
+        {
+          "word": "light",
+          "prob": 0.201,
+          "top5": [
+            {
+              "word": "light",
+              "prob": 0.201
+            },
+            {
+              "word": "make",
+              "prob": 0.0989
+            },
+            {
+              "word": "shine",
+              "prob": 0.0989
+            },
+            {
+              "word": "is",
+              "prob": 0.07740000000000001
+            },
+            {
+              "word": "sun",
+              "prob": 0.063
+            }
+          ]
+        },
+        {
+          "word": "color",
+          "prob": 0.044800000000000006,
+          "top5": [
+            {
+              "word": "light",
+              "prob": 0.1408
+            },
+            {
+              "word": "break",
+              "prob": 0.13319999999999999
+            },
+            {
+              "word": ".",
+              "prob": 0.0868
+            },
+            {
+              "word": "is",
+              "prob": 0.061200000000000004
+            },
+            {
+              "word": "sun",
+              "prob": 0.0512
+            }
+          ]
+        },
+        {
+          "word": ".",
+          "prob": 0.18450000000000003,
+          "top5": [
+            {
+              "word": "<END>",
+              "prob": 0.19270000000000004
+            },
+            {
+              "word": ".",
+              "prob": 0.18450000000000003
+            },
+            {
+              "word": "is",
+              "prob": 0.0989
+            },
+            {
+              "word": "light",
+              "prob": 0.0665
+            },
+            {
+              "word": "color",
+              "prob": 0.0437
+            }
+          ]
+        },
+        {
+          "word": "<END>",
+          "prob": 0.372,
+          "top5": [
+            {
+              "word": "<END>",
+              "prob": 0.372
+            },
+            {
+              "word": ".",
+              "prob": 0.22319999999999998
+            },
+            {
+              "word": "is",
+              "prob": 0.08639999999999999
+            },
+            {
+              "word": "light",
+              "prob": 0.0252
+            },
+            {
+              "word": "color",
+              "prob": 0.0189
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "prompt": "My code has a bug and I can't find it. What should I do?",
+      "text": "Code bug check do look. Test. Try search error fix.",
+      "words": 13,
+      "req": 14,
+      "tok": 74316,
+      "wall": 5.20161325,
+      "steps": [
+        {
+          "word": "code",
+          "prob": 0.14880000000000002,
+          "top5": [
+            {
+              "word": "bug",
+              "prob": 0.2852
+            },
+            {
+              "word": "code",
+              "prob": 0.14880000000000002
+            },
+            {
+              "word": "check",
+              "prob": 0.12100000000000001
+            },
+            {
+              "word": "look",
+              "prob": 0.03300000000000001
+            },
+            {
+              "word": "you",
+              "prob": 0.03
+            }
+          ]
+        },
+        {
+          "word": "bug",
+          "prob": 0.126,
+          "top5": [
+            {
+              "word": "check",
+              "prob": 0.3472
+            },
+            {
+              "word": "bug",
+              "prob": 0.126
+            },
+            {
+              "word": "look",
+              "prob": 0.10540000000000001
+            },
+            {
+              "word": "test",
+              "prob": 0.036
+            },
+            {
+              "word": "find",
+              "prob": 0.031
+            }
+          ]
+        },
+        {
+          "word": "check",
+          "prob": 0.34980000000000006,
+          "top5": [
+            {
+              "word": "check",
+              "prob": 0.34980000000000006
+            },
+            {
+              "word": "look",
+              "prob": 0.09900000000000002
+            },
+            {
+              "word": "try",
+              "prob": 0.0462
+            },
+            {
+              "word": ".",
+              "prob": 0.040600000000000004
+            },
+            {
+              "word": "fix",
+              "prob": 0.0396
+            }
+          ]
+        },
+        {
+          "word": "do",
+          "prob": 0.052000000000000005,
+          "top5": [
+            {
+              "word": "check",
+              "prob": 0.24700000000000003
+            },
+            {
+              "word": "look",
+              "prob": 0.12350000000000001
+            },
+            {
+              "word": "try",
+              "prob": 0.07150000000000001
+            },
+            {
+              "word": "do",
+              "prob": 0.052000000000000005
+            },
+            {
+              "word": "test",
+              "prob": 0.0504
+            }
+          ]
+        },
+        {
+          "word": "look",
+          "prob": 0.0968,
+          "top5": [
+            {
+              "word": "check",
+              "prob": 0.0968
+            },
+            {
+              "word": "look",
+              "prob": 0.0968
+            },
+            {
+              "word": "bug",
+              "prob": 0.084
+            },
+            {
+              "word": "test",
+              "prob": 0.06999999999999999
+            },
+            {
+              "word": ".",
+              "prob": 0.06709999999999999
+            }
+          ]
+        },
+        {
+          "word": ".",
+          "prob": 0.096,
+          "top5": [
+            {
+              "word": ".",
+              "prob": 0.096
+            },
+            {
+              "word": "check",
+              "prob": 0.08820000000000001
+            },
+            {
+              "word": "look",
+              "prob": 0.08820000000000001
+            },
+            {
+              "word": "try",
+              "prob": 0.0637
+            },
+            {
+              "word": "bug",
+              "prob": 0.06210000000000001
+            }
+          ]
+        },
+        {
+          "word": "test",
+          "prob": 0.04,
+          "top5": [
+            {
+              "word": ".",
+              "prob": 0.1575
+            },
+            {
+              "word": "look",
+              "prob": 0.084
+            },
+            {
+              "word": "check",
+              "prob": 0.0672
+            },
+            {
+              "word": "bug",
+              "prob": 0.060000000000000005
+            },
+            {
+              "word": "try",
+              "prob": 0.0462
+            }
+          ]
+        },
+        {
+          "word": ".",
+          "prob": 0.11220000000000001,
+          "top5": [
+            {
+              "word": ".",
+              "prob": 0.11220000000000001
+            },
+            {
+              "word": "try",
+              "prob": 0.09660000000000002
+            },
+            {
+              "word": "bug",
+              "prob": 0.06720000000000001
+            },
+            {
+              "word": "check",
+              "prob": 0.059800000000000006
+            },
+            {
+              "word": "look",
+              "prob": 0.0552
+            }
+          ]
+        },
+        {
+          "word": "try",
+          "prob": 0.1012,
+          "top5": [
+            {
+              "word": "try",
+              "prob": 0.1012
+            },
+            {
+              "word": ".",
+              "prob": 0.0992
+            },
+            {
+              "word": "check",
+              "prob": 0.0782
+            },
+            {
+              "word": "bug",
+              "prob": 0.0651
+            },
+            {
+              "word": "<END>",
+              "prob": 0.05280000000000001
+            }
+          ]
+        },
+        {
+          "word": "search",
+          "prob": 0.026400000000000003,
+          "top5": [
+            {
+              "word": ".",
+              "prob": 0.0992
+            },
+            {
+              "word": "check",
+              "prob": 0.0968
+            },
+            {
+              "word": "bug",
+              "prob": 0.0792
+            },
+            {
+              "word": "code",
+              "prob": 0.05280000000000001
+            },
+            {
+              "word": "<END>",
+              "prob": 0.0512
+            }
+          ]
+        },
+        {
+          "word": "error",
+          "prob": 0.033800000000000004,
+          "top5": [
+            {
+              "word": ".",
+              "prob": 0.1311
+            },
+            {
+              "word": "check",
+              "prob": 0.1012
+            },
+            {
+              "word": "<END>",
+              "prob": 0.0897
+            },
+            {
+              "word": "try",
+              "prob": 0.0506
+            },
+            {
+              "word": "look",
+              "prob": 0.0506
+            }
+          ]
+        },
+        {
+          "word": "fix",
+          "prob": 0.043199999999999995,
+          "top5": [
+            {
+              "word": "check",
+              "prob": 0.096
+            },
+            {
+              "word": ".",
+              "prob": 0.096
+            },
+            {
+              "word": "try",
+              "prob": 0.0528
+            },
+            {
+              "word": "<END>",
+              "prob": 0.0465
+            },
+            {
+              "word": "fix",
+              "prob": 0.043199999999999995
+            }
+          ]
+        },
+        {
+          "word": ".",
+          "prob": 0.1647,
+          "top5": [
+            {
+              "word": ".",
+              "prob": 0.1647
+            },
+            {
+              "word": "<END>",
+              "prob": 0.0918
+            },
+            {
+              "word": "check",
+              "prob": 0.07800000000000001
+            },
+            {
+              "word": "try",
+              "prob": 0.05460000000000001
+            },
+            {
+              "word": "error",
+              "prob": 0.054000000000000006
+            }
+          ]
+        },
+        {
+          "word": "<END>",
+          "prob": 0.11220000000000001,
+          "top5": [
+            {
+              "word": ".",
+              "prob": 0.21420000000000003
+            },
+            {
+              "word": "<END>",
+              "prob": 0.11220000000000001
+            },
+            {
+              "word": "try",
+              "prob": 0.061200000000000004
+            },
+            {
+              "word": "check",
+              "prob": 0.0578
+            },
+            {
+              "word": "error",
+              "prob": 0.05
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "prompt": "Tell me a story about a mammoth hunt.",
+      "text": "Mammoth tell saw was saw. Hunt hunter. Kill find story go.",
+      "words": 14,
+      "req": 15,
+      "tok": 79554,
+      "wall": 6.675121291,
+      "steps": [
+        {
+          "word": "mammoth",
+          "prob": 0.5695,
+          "top5": [
+            {
+              "word": "mammoth",
+              "prob": 0.5695
+            },
+            {
+              "word": "story",
+              "prob": 0.1105
+            },
+            {
+              "word": "hunt",
+              "prob": 0.08499999999999999
+            },
+            {
+              "word": "hunter",
+              "prob": 0.051000000000000004
+            },
+            {
+              "word": "tell",
+              "prob": 0.042
+            }
+          ]
+        },
+        {
+          "word": "tell",
+          "prob": 0.0664,
+          "top5": [
+            {
+              "word": "saw",
+              "prob": 0.1577
+            },
+            {
+              "word": "kill",
+              "prob": 0.1494
+            },
+            {
+              "word": "went",
+              "prob": 0.09129999999999999
+            },
+            {
+              "word": "find",
+              "prob": 0.0664
+            },
+            {
+              "word": "tell",
+              "prob": 0.0664
+            }
+          ]
+        },
+        {
+          "word": "saw",
+          "prob": 0.21330000000000002,
+          "top5": [
+            {
+              "word": "saw",
+              "prob": 0.21330000000000002
+            },
+            {
+              "word": "tell",
+              "prob": 0.15800000000000003
+            },
+            {
+              "word": "kill",
+              "prob": 0.079
+            },
+            {
+              "word": "went",
+              "prob": 0.0632
+            },
+            {
+              "word": "find",
+              "prob": 0.047400000000000005
+            }
+          ]
+        },
+        {
+          "word": "was",
+          "prob": 0.034,
+          "top5": [
+            {
+              "word": "saw",
+              "prob": 0.21760000000000002
+            },
+            {
+              "word": "went",
+              "prob": 0.0748
+            },
+            {
+              "word": "kill",
+              "prob": 0.061200000000000004
+            },
+            {
+              "word": "tell",
+              "prob": 0.054400000000000004
+            },
+            {
+              "word": "hunt",
+              "prob": 0.0506
+            }
+          ]
+        },
+        {
+          "word": "saw",
+          "prob": 0.2336,
+          "top5": [
+            {
+              "word": "saw",
+              "prob": 0.2336
+            },
+            {
+              "word": "was",
+              "prob": 0.10950000000000001
+            },
+            {
+              "word": "tell",
+              "prob": 0.0584
+            },
+            {
+              "word": "is",
+              "prob": 0.05109999999999999
+            },
+            {
+              "word": "story",
+              "prob": 0.048600000000000004
+            }
+          ]
+        },
+        {
+          "word": ".",
+          "prob": 0.08879999999999999,
+          "top5": [
+            {
+              "word": "saw",
+              "prob": 0.1222
+            },
+            {
+              "word": "hunt",
+              "prob": 0.0928
+            },
+            {
+              "word": ".",
+              "prob": 0.08879999999999999
+            },
+            {
+              "word": "tell",
+              "prob": 0.0799
+            },
+            {
+              "word": "story",
+              "prob": 0.055099999999999996
+            }
+          ]
+        },
+        {
+          "word": "hunt",
+          "prob": 0.108,
+          "top5": [
+            {
+              "word": ".",
+              "prob": 0.1679
+            },
+            {
+              "word": "hunt",
+              "prob": 0.108
+            },
+            {
+              "word": "mammoth",
+              "prob": 0.09
+            },
+            {
+              "word": "saw",
+              "prob": 0.0875
+            },
+            {
+              "word": "story",
+              "prob": 0.0828
+            }
+          ]
+        },
+        {
+          "word": "hunter",
+          "prob": 0.11000000000000001,
+          "top5": [
+            {
+              "word": "mammoth",
+              "prob": 0.14850000000000002
+            },
+            {
+              "word": "hunter",
+              "prob": 0.11000000000000001
+            },
+            {
+              "word": "hunt",
+              "prob": 0.08250000000000002
+            },
+            {
+              "word": "kill",
+              "prob": 0.05780000000000001
+            },
+            {
+              "word": "story",
+              "prob": 0.055
+            }
+          ]
+        },
+        {
+          "word": ".",
+          "prob": 0.0378,
+          "top5": [
+            {
+              "word": "mammoth",
+              "prob": 0.162
+            },
+            {
+              "word": "kill",
+              "prob": 0.0903
+            },
+            {
+              "word": "hunt",
+              "prob": 0.09000000000000001
+            },
+            {
+              "word": "went",
+              "prob": 0.0688
+            },
+            {
+              "word": "spear",
+              "prob": 0.045
+            }
+          ]
+        },
+        {
+          "word": "kill",
+          "prob": 0.049,
+          "top5": [
+            {
+              "word": "mammoth",
+              "prob": 0.15
+            },
+            {
+              "word": "hunt",
+              "prob": 0.115
+            },
+            {
+              "word": "went",
+              "prob": 0.055999999999999994
+            },
+            {
+              "word": "tell",
+              "prob": 0.055999999999999994
+            },
+            {
+              "word": "story",
+              "prob": 0.049999999999999996
+            }
+          ]
+        },
+        {
+          "word": "find",
+          "prob": 0.023999999999999997,
+          "top5": [
+            {
+              "word": "mammoth",
+              "prob": 0.19039999999999999
+            },
+            {
+              "word": "hunt",
+              "prob": 0.09519999999999999
+            },
+            {
+              "word": "story",
+              "prob": 0.07279999999999999
+            },
+            {
+              "word": ".",
+              "prob": 0.06709999999999999
+            },
+            {
+              "word": "went",
+              "prob": 0.0408
+            }
+          ]
+        },
+        {
+          "word": "story",
+          "prob": 0.053899999999999997,
+          "top5": [
+            {
+              "word": "mammoth",
+              "prob": 0.13720000000000002
+            },
+            {
+              "word": "hunt",
+              "prob": 0.1029
+            },
+            {
+              "word": "went",
+              "prob": 0.06649999999999999
+            },
+            {
+              "word": "story",
+              "prob": 0.053899999999999997
+            },
+            {
+              "word": "spear",
+              "prob": 0.0441
+            }
+          ]
+        },
+        {
+          "word": "go",
+          "prob": 0.020299999999999995,
+          "top5": [
+            {
+              "word": "mammoth",
+              "prob": 0.12420000000000002
+            },
+            {
+              "word": "<END>",
+              "prob": 0.0912
+            },
+            {
+              "word": ".",
+              "prob": 0.0874
+            },
+            {
+              "word": "hunt",
+              "prob": 0.0874
+            },
+            {
+              "word": "spear",
+              "prob": 0.0506
+            }
+          ]
+        },
+        {
+          "word": ".",
+          "prob": 0.08600000000000001,
+          "top5": [
+            {
+              "word": "mammoth",
+              "prob": 0.1092
+            },
+            {
+              "word": "<END>",
+              "prob": 0.10600000000000001
+            },
+            {
+              "word": ".",
+              "prob": 0.08600000000000001
+            },
+            {
+              "word": "hunt",
+              "prob": 0.0756
+            },
+            {
+              "word": "story",
+              "prob": 0.063
+            }
+          ]
+        },
+        {
+          "word": "<END>",
+          "prob": 0.14840000000000003,
+          "top5": [
+            {
+              "word": "<END>",
+              "prob": 0.14840000000000003
+            },
+            {
+              "word": "mammoth",
+              "prob": 0.12470000000000002
+            },
+            {
+              "word": ".",
+              "prob": 0.12040000000000001
+            },
+            {
+              "word": "hunt",
+              "prob": 0.0645
+            },
+            {
+              "word": "story",
+              "prob": 0.0516
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "prompt": "What do you think about money?",
+      "text": "Money is thing. Use.",
+      "words": 6,
+      "req": 7,
+      "tok": 37069,
+      "wall": 3.841959834,
+      "steps": [
+        {
+          "word": "money",
+          "prob": 0.38,
+          "top5": [
+            {
+              "word": "money",
+              "prob": 0.38
+            },
+            {
+              "word": "me",
+              "prob": 0.2352
+            },
+            {
+              "word": "it",
+              "prob": 0.0384
+            },
+            {
+              "word": "think",
+              "prob": 0.0341
+            },
+            {
+              "word": "like",
+              "prob": 0.028800000000000003
+            }
+          ]
+        },
+        {
+          "word": "is",
+          "prob": 0.216,
+          "top5": [
+            {
+              "word": "is",
+              "prob": 0.216
+            },
+            {
+              "word": "think",
+              "prob": 0.10800000000000001
+            },
+            {
+              "word": "use",
+              "prob": 0.0936
+            },
+            {
+              "word": "<END>",
+              "prob": 0.0792
+            },
+            {
+              "word": "need",
+              "prob": 0.0576
+            }
+          ]
+        },
+        {
+          "word": "thing",
+          "prob": 0.1862,
+          "top5": [
+            {
+              "word": "is",
+              "prob": 0.1872
+            },
+            {
+              "word": "thing",
+              "prob": 0.1862
+            },
+            {
+              "word": "way",
+              "prob": 0.0637
+            },
+            {
+              "word": "magic",
+              "prob": 0.0392
+            },
+            {
+              "word": "mean",
+              "prob": 0.036
+            }
+          ]
+        },
+        {
+          "word": ".",
+          "prob": 0.17859999999999998,
+          "top5": [
+            {
+              "word": "is",
+              "prob": 0.21600000000000003
+            },
+            {
+              "word": "<END>",
+              "prob": 0.1862
+            },
+            {
+              "word": ".",
+              "prob": 0.17859999999999998
+            },
+            {
+              "word": "use",
+              "prob": 0.052000000000000005
+            },
+            {
+              "word": "good",
+              "prob": 0.03
+            }
+          ]
+        },
+        {
+          "word": "use",
+          "prob": 0.0364,
+          "top5": [
+            {
+              "word": "<END>",
+              "prob": 0.33
+            },
+            {
+              "word": ".",
+              "prob": 0.264
+            },
+            {
+              "word": "is",
+              "prob": 0.1274
+            },
+            {
+              "word": "use",
+              "prob": 0.0364
+            },
+            {
+              "word": "good",
+              "prob": 0.026500000000000003
+            }
+          ]
+        },
+        {
+          "word": ".",
+          "prob": 0.1922,
+          "top5": [
+            {
+              "word": ".",
+              "prob": 0.1922
+            },
+            {
+              "word": "use",
+              "prob": 0.10660000000000001
+            },
+            {
+              "word": "<END>",
+              "prob": 0.10540000000000001
+            },
+            {
+              "word": "good",
+              "prob": 0.07840000000000001
+            },
+            {
+              "word": "money",
+              "prob": 0.0682
+            }
+          ]
+        },
+        {
+          "word": "<END>",
+          "prob": 0.4032,
+          "top5": [
+            {
+              "word": "<END>",
+              "prob": 0.4032
+            },
+            {
+              "word": ".",
+              "prob": 0.22049999999999997
+            },
+            {
+              "word": "use",
+              "prob": 0.0608
+            },
+            {
+              "word": "good",
+              "prob": 0.0357
+            },
+            {
+              "word": "money",
+              "prob": 0.0341
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "codejev": {
+    "greedy": 9,
+    "any": 12,
+    "tokens": 1321873,
+    "wall": 116.922691542,
+    "tasks": [
+      {
+        "name": "add",
+        "desc": "Return the sum of the two numbers.",
+        "greedy": true,
+        "any": true,
+        "passes": 6,
+        "req": 30,
+        "tok": 42678,
+        "wall": 3.732996333,
+        "code": "function add(rock, fire) {\n  return (rock + fire);\n}"
+      },
+      {
+        "name": "bigger",
+        "desc": "Return the larger of the two numbers.",
+        "greedy": true,
+        "any": true,
+        "passes": 6,
+        "req": 57,
+        "tok": 77094,
+        "wall": 15.38882875,
+        "code": "function bigger(rock, fire) {\n  return Math.max(rock, fire);\n}"
+      },
+      {
+        "name": "isEven",
+        "desc": "Return true when the number is even, false otherwise.",
+        "greedy": false,
+        "any": true,
+        "passes": 3,
+        "req": 38,
+        "tok": 55008,
+        "wall": 5.826182291,
+        "code": "function isEven(rock) {\n  return ((rock % 2) === 0);\n}"
+      },
+      {
+        "name": "absolute",
+        "desc": "Return the number without its sign.",
+        "greedy": true,
+        "any": true,
+        "passes": 6,
+        "req": 24,
+        "tok": 32208,
+        "wall": 4.847536084,
+        "code": "function absolute(rock) {\n  return Math.abs(rock);\n}"
+      },
+      {
+        "name": "shout",
+        "desc": "Return the word in capital letters.",
+        "greedy": true,
+        "any": true,
+        "passes": 6,
+        "req": 18,
+        "tok": 23178,
+        "wall": 2.959346875,
+        "code": "function shout(word) {\n  return word.toUpperCase();\n}"
+      },
+      {
+        "name": "howLong",
+        "desc": "Return how many characters the word has.",
+        "greedy": true,
+        "any": true,
+        "passes": 6,
+        "req": 18,
+        "tok": 23088,
+        "wall": 20.255893166,
+        "code": "function howLong(word) {\n  return word.length;\n}"
+      },
+      {
+        "name": "first",
+        "desc": "Return the first item of the array.",
+        "greedy": false,
+        "any": true,
+        "passes": 1,
+        "req": 32,
+        "tok": 43670,
+        "wall": 2.2666855,
+        "code": "function first(tribe) {\n  return tribe[0];\n}"
+      },
+      {
+        "name": "last",
+        "desc": "Return the last item of the array.",
+        "greedy": false,
+        "any": false,
+        "passes": 0,
+        "req": 29,
+        "tok": 40357,
+        "wall": 1.5528007499999998,
+        "code": "function last(tribe) {\n  return tribe[-(1)];\n}"
+      },
+      {
+        "name": "total",
+        "desc": "Return the sum of all numbers in the array.",
+        "greedy": true,
+        "any": true,
+        "passes": 2,
+        "req": 104,
+        "tok": 147075,
+        "wall": 8.75474775,
+        "code": "function total(tribe) {\n  let sun = 0;\n  for (const stick of tribe) {\n    sun = (sun + stick);\n  }\n  return sun;\n}"
+      },
+      {
+        "name": "countBig",
+        "desc": "Return how many numbers in the array are greater than 10.",
+        "greedy": true,
+        "any": true,
+        "passes": 3,
+        "req": 141,
+        "tok": 203872,
+        "wall": 11.008820375,
+        "code": "function countBig(tribe) {\n  let mammoth = 0;\n  for (const hunt of tribe) {\n    if ((hunt > 10)) {\n      mammoth = (mammoth + 1);\n    }\n  }\n  return mammoth;\n}"
+      },
+      {
+        "name": "has",
+        "desc": "Return true when the array contains the number, false otherwise.",
+        "greedy": true,
+        "any": true,
+        "passes": 6,
+        "req": 24,
+        "tok": 33294,
+        "wall": 1.344392333,
+        "code": "function has(tribe, rock) {\n  return tribe.includes(rock);\n}"
+      },
+      {
+        "name": "factorial",
+        "desc": "Return the factorial of the number: the product of all whole numbers from 1 up to the number. The factorial of 0 is 1.",
+        "greedy": false,
+        "any": false,
+        "passes": 0,
+        "req": 94,
+        "tok": 135403,
+        "wall": 7.739261791,
+        "code": "function factorial(rock) {\n  let bear = 1;\n  for (let stick = 1; stick < rock; stick++) {\n    bear = (bear * stick);\n  }\n  return bear;\n}"
+      },
+      {
+        "name": "clamp",
+        "desc": "Return the number limited to the range: not below the low bound and not above the high bound.",
+        "greedy": false,
+        "any": true,
+        "passes": 3,
+        "req": 89,
+        "tok": 126004,
+        "wall": 6.786073459,
+        "code": "function clamp(rock, low, high) {\n  if ((rock < low)) {\n    return low;\n  } else {\n    if ((rock > high)) {\n      return high;\n    }\n    return rock;\n  }\n}"
+      },
+      {
+        "name": "sign",
+        "desc": "Return 1 when the number is positive, -1 when negative, 0 when zero.",
+        "greedy": true,
+        "any": true,
+        "passes": 2,
+        "req": 154,
+        "tok": 210762,
+        "wall": 17.562311833,
+        "code": "function sign(rock) {\n  if ((rock > 0)) {\n    return 1;\n  } else {\n    if ((rock < 0)) {\n      return -1;\n    } else {\n      return 0;\n    }\n  }\n}"
+      },
+      {
+        "name": "reverseWord",
+        "desc": "Return the word with its characters in reverse order.",
+        "greedy": false,
+        "any": false,
+        "passes": 0,
+        "req": 33,
+        "tok": 43849,
+        "wall": 2.1021065,
+        "code": "function reverseWord(word) {\n  return word.split(\"\");\n  return word.reverse();\n}"
+      },
+      {
+        "name": "biggest",
+        "desc": "Return the largest number in the array. The array is never empty.",
+        "greedy": false,
+        "any": false,
+        "passes": 0,
+        "req": 62,
+        "tok": 84333,
+        "wall": 4.7918882499999995,
+        "code": "function biggest(tribe) {\n  return Math.max(tribe, tribe.length);\n}"
+      }
+    ]
+  },
+  "concurrency": [
+    {
+      "label": "single",
+      "conc": 8,
+      "ok": 64,
+      "req_s": 20.67223969705861,
+      "traces_s": 20.67223969705861,
+      "tok_s": 60513.78266445062,
+      "p50": 274.024416,
+      "p95": 924.0375,
+      "r429": 0
+    },
+    {
+      "label": "single",
+      "conc": 32,
+      "ok": 192,
+      "req_s": 61.5238816602556,
+      "traces_s": 61.5238816602556,
+      "tok_s": 180371.99918368703,
+      "p50": 292.12125,
+      "p95": 1348.980667,
+      "r429": 0
+    },
+    {
+      "label": "single",
+      "conc": 64,
+      "ok": 256,
+      "req_s": 74.50115511465476,
+      "traces_s": 74.50115511465476,
+      "tok_s": 218597.15685147225,
+      "p50": 463.943333,
+      "p95": 2047.758333,
+      "r429": 0
+    },
+    {
+      "label": "single",
+      "conc": 128,
+      "ok": 384,
+      "req_s": 100.86880481827166,
+      "traces_s": 100.86880481827166,
+      "tok_s": 295891.5465965611,
+      "p50": 882.987875,
+      "p95": 1777.194416,
+      "r429": 0
+    },
+    {
+      "label": "single",
+      "conc": 256,
+      "ok": 512,
+      "req_s": 111.9454800814032,
+      "traces_s": 111.9454800814032,
+      "tok_s": 328393.15903637523,
+      "p50": 1529.443542,
+      "p95": 3107.127417,
+      "r429": 0
+    },
+    {
+      "label": "single",
+      "conc": 512,
+      "ok": 1024,
+      "req_s": 160.10917862402314,
+      "traces_s": 160.10917862402314,
+      "tok_s": 469537.8346129796,
+      "p50": 2093.865875,
+      "p95": 5574.017916,
+      "r429": 0
+    },
+    {
+      "label": "packed10",
+      "conc": 8,
+      "ok": 32,
+      "req_s": 8.39988740213434,
+      "traces_s": 83.9988740213434,
+      "tok_s": 229373.88781471318,
+      "p50": 655.377625,
+      "p95": 1798.425541,
+      "r429": 0
+    },
+    {
+      "label": "packed10",
+      "conc": 16,
+      "ok": 48,
+      "req_s": 8.910829883397563,
+      "traces_s": 89.10829883397562,
+      "tok_s": 243229.82685493064,
+      "p50": 1359.608583,
+      "p95": 2761.1835,
+      "r429": 0
+    },
+    {
+      "label": "packed10",
+      "conc": 32,
+      "ok": 64,
+      "req_s": 12.559983222123211,
+      "traces_s": 125.59983222123212,
+      "tok_s": 342862.61824725725,
+      "p50": 1292.502625,
+      "p95": 3992.206625,
+      "r429": 0
+    },
+    {
+      "label": "packed10",
+      "conc": 64,
+      "ok": 128,
+      "req_s": 12.163061229657933,
+      "traces_s": 121.63061229657933,
+      "tok_s": 332005.0098508918,
+      "p50": 4090.732792,
+      "p95": 5485.280167,
+      "r429": 9
+    },
+    {
+      "label": "packed10",
+      "conc": 128,
+      "ok": 256,
+      "req_s": 8.491156309372146,
+      "traces_s": 84.91156309372147,
+      "tok_s": 231805.34989366424,
+      "p50": 10672.729375,
+      "p95": 22813.646542,
+      "r429": 170
+    }
+  ],
+  "cavejev_parallel": [
+    {
+      "prompt": "Why is the sky blue?",
+      "text": "Sky is bright light bright.",
+      "words": 6,
+      "req": 7,
+      "tok": 52704,
+      "wall": 3.9708955,
+      "rounds": [
+        {
+          "round": 0,
+          "words": [
+            "sky",
+            "is",
+            "light",
+            "to",
+            ".",
+            "see",
+            ".",
+            "<END>"
+          ],
+          "masked": 8
+        },
+        {
+          "round": 1,
+          "words": [
+            "sky",
+            "is",
+            ".",
+            "light",
+            "way",
+            "dark",
+            ".",
+            "<END>"
+          ],
+          "masked": 6
+        },
+        {
+          "round": 2,
+          "words": [
+            "sky",
+            "is",
+            "light",
+            "have",
+            "to",
+            ".",
+            "<END>",
+            "<END>"
+          ],
+          "masked": 5
+        },
+        {
+          "round": 3,
+          "words": [
+            "sky",
+            "is",
+            "bright",
+            "light",
+            "see",
+            ".",
+            "<END>",
+            "<END>"
+          ],
+          "masked": 4
+        },
+        {
+          "round": 4,
+          "words": [
+            "sky",
+            "is",
+            "sun",
+            "light",
+            "bright",
+            ".",
+            "<END>",
+            "<END>"
+          ],
+          "masked": 2
+        },
+        {
+          "round": 5,
+          "words": [
+            "sky",
+            "is",
+            "bright",
+            "light",
+            "bright",
+            ".",
+            "<END>",
+            "<END>"
+          ],
+          "masked": 1
+        }
+      ]
+    },
+    {
+      "prompt": "My code has a bug and I can't find it. What should I do?",
+      "text": "Look code in code. Fix.",
+      "words": 7,
+      "req": 7,
+      "tok": 105685,
+      "wall": 4.302344959,
+      "rounds": [
+        {
+          "round": 0,
+          "words": [
+            "look",
+            ".",
+            "bug",
+            "code",
+            ".",
+            "find",
+            ".",
+            "<END>",
+            ".",
+            "rock",
+            "me",
+            "get",
+            ".",
+            "<END>",
+            "root",
+            "?"
+          ],
+          "masked": 16
+        },
+        {
+          "round": 1,
+          "words": [
+            "look",
+            "code",
+            "bug",
+            "code",
+            ".",
+            "find",
+            "get",
+            "break",
+            "no",
+            "ask",
+            ".",
+            "<END>",
+            "fix",
+            "<END>",
+            "?",
+            "<END>"
+          ],
+          "masked": 13
+        },
+        {
+          "round": 2,
+          "words": [
+            "look",
+            "code",
+            "find",
+            "code",
+            "bug",
+            "do",
+            "have",
+            "see",
+            "ask",
+            ".",
+            "<END>",
+            "<END>",
+            ".",
+            "<END>",
+            ".",
+            "<END>"
+          ],
+          "masked": 10
+        },
+        {
+          "round": 3,
+          "words": [
+            "look",
+            "code",
+            "find",
+            "code",
+            ".",
+            "to",
+            ".",
+            "<END>",
+            ".",
+            "<END>",
+            "<END>",
+            "<END>",
+            "fix",
+            "<END>",
+            "bug",
+            "<END>"
+          ],
+          "masked": 8
+        },
+        {
+          "round": 4,
+          "words": [
+            "look",
+            "code",
+            "in",
+            "code",
+            ".",
+            "fix",
+            ".",
+            "<END>",
+            ".",
+            "<END>",
+            "<END>",
+            "<END>",
+            "bug",
+            "<END>",
+            "how",
+            "<END>"
+          ],
+          "masked": 5
+        },
+        {
+          "round": 5,
+          "words": [
+            "look",
+            "code",
+            "in",
+            "code",
+            ".",
+            "fix",
+            ".",
+            "<END>",
+            ".",
+            "<END>",
+            "<END>",
+            "<END>",
+            "do",
+            "<END>",
+            "bug",
+            "<END>"
+          ],
+          "masked": 2
+        }
+      ]
+    },
+    {
+      "prompt": "Tell me a story about a mammoth hunt.",
+      "text": "Mammoth hunt kill we get home..",
+      "words": 8,
+      "req": 9,
+      "tok": 265675,
+      "wall": 5.331617708,
+      "rounds": [
+        {
+          "round": 0,
+          "words": [
+            "mammoth",
+            "go",
+            "hunt",
+            "see",
+            ".",
+            "kill",
+            ".",
+            "run",
+            "we",
+            "then",
+            "find",
+            ".",
+            "home",
+            ".",
+            "<END>",
+            "feast",
+            ".",
+            "good",
+            "get",
+            ".",
+            "food",
+            ".",
+            "meat",
+            ".",
+            "big",
+            "cave",
+            ".",
+            "eat",
+            ".",
+            "<END>",
+            ".",
+            "<END>",
+            "?",
+            "cook",
+            ".",
+            "who",
+            ".",
+            "tribe",
+            ".",
+            "<END>"
+          ],
+          "masked": 40
+        },
+        {
+          "round": 1,
+          "words": [
+            "mammoth",
+            "hunt",
+            "we",
+            ".",
+            "kill",
+            "spear",
+            ".",
+            "run",
+            ".",
+            "then",
+            ".",
+            "<END>",
+            ".",
+            "dead",
+            ".",
+            "blood",
+            ".",
+            "<END>",
+            "?",
+            "get",
+            "?",
+            "fight",
+            ".",
+            "big",
+            ".",
+            "<END>",
+            "home",
+            ".",
+            ".",
+            "<END>",
+            "tribe",
+            "<END>",
+            ".",
+            "wheel",
+            ".",
+            "cook",
+            ".",
+            "food",
+            ".",
+            "<END>"
+          ],
+          "masked": 33
+        },
+        {
+          "round": 2,
+          "words": [
+            "mammoth",
+            "hunt",
+            "kill",
+            "we",
+            "spear",
+            "see",
+            ".",
+            "then",
+            ".",
+            "<END>",
+            ".",
+            "find",
+            ".",
+            "<END>",
+            "?",
+            "go",
+            ".",
+            "<END>",
+            "feast",
+            "cave",
+            ".",
+            "cook",
+            ".",
+            "dead",
+            ".",
+            "<END>",
+            "meat",
+            ".",
+            ".",
+            "<END>",
+            "good",
+            "<END>",
+            ".",
+            "home",
+            ".",
+            "food",
+            ".",
+            "winter",
+            ".",
+            "<END>"
+          ],
+          "masked": 26
+        },
+        {
+          "round": 3,
+          "words": [
+            "mammoth",
+            "hunt",
+            "kill",
+            "we",
+            "see",
+            "run",
+            "spear",
+            ".",
+            "<END>",
+            ".",
+            "big",
+            ".",
+            ".",
+            "<END>",
+            "go",
+            ".",
+            ".",
+            "<END>",
+            "?",
+            "<END>",
+            ".",
+            "cook",
+            ".",
+            "feast",
+            ".",
+            "<END>",
+            "cave",
+            ".",
+            ".",
+            "<END>",
+            "home",
+            "<END>",
+            ".",
+            "food",
+            ".",
+            "eat",
+            ".",
+            "when",
+            ".",
+            "<END>"
+          ],
+          "masked": 20
+        },
+        {
+          "round": 4,
+          "words": [
+            "mammoth",
+            "hunt",
+            "kill",
+            "we",
+            "get",
+            "home",
+            ".",
+            ".",
+            "<END>",
+            ".",
+            "food",
+            ".",
+            ".",
+            "<END>",
+            "meat",
+            ".",
+            ".",
+            "<END>",
+            "cook",
+            "<END>",
+            ".",
+            "blood",
+            ".",
+            "go",
+            ".",
+            "<END>",
+            "?",
+            ".",
+            ".",
+            "<END>",
+            "cave",
+            "<END>",
+            ".",
+            "find",
+            ".",
+            "feast",
+            ".",
+            "tribe",
+            ".",
+            "<END>"
+          ],
+          "masked": 13
+        },
+        {
+          "round": 5,
+          "words": [
+            "mammoth",
+            "hunt",
+            "kill",
+            "we",
+            "get",
+            "home",
+            ".",
+            ".",
+            "<END>",
+            ".",
+            "meat",
+            ".",
+            ".",
+            "<END>",
+            "meat",
+            ".",
+            ".",
+            "<END>",
+            "cook",
+            "<END>",
+            ".",
+            "eat",
+            ".",
+            "feast",
+            ".",
+            "<END>",
+            "?",
+            ".",
+            ".",
+            "<END>",
+            "tribe",
+            "<END>",
+            ".",
+            "cave",
+            ".",
+            "feast",
+            ".",
+            "full",
+            ".",
+            "<END>"
+          ],
+          "masked": 6
+        }
+      ]
+    },
+    {
+      "prompt": "What do you think about money?",
+      "text": "Money use need. Want me",
+      "words": 6,
+      "req": 7,
+      "tok": 105624,
+      "wall": 4.029800375,
+      "rounds": [
+        {
+          "round": 0,
+          "words": [
+            "money",
+            ".",
+            "is",
+            "use",
+            ".",
+            "keep",
+            ".",
+            "want",
+            ".",
+            "<END>",
+            ".",
+            "bad",
+            ".",
+            "need",
+            ".",
+            "<END>"
+          ],
+          "masked": 16
+        },
+        {
+          "round": 1,
+          "words": [
+            "money",
+            "good",
+            "use",
+            ".",
+            "want",
+            ".",
+            "<END>",
+            ".",
+            "<END>",
+            "<END>",
+            "get",
+            ".",
+            "<END>",
+            "thing",
+            ".",
+            "<END>"
+          ],
+          "masked": 13
+        },
+        {
+          "round": 2,
+          "words": [
+            "money",
+            "use",
+            "good",
+            ".",
+            "keep",
+            "need",
+            "<END>",
+            ".",
+            "<END>",
+            "<END>",
+            "want",
+            "have",
+            "<END>",
+            ".",
+            "no",
+            "<END>"
+          ],
+          "masked": 10
+        },
+        {
+          "round": 3,
+          "words": [
+            "money",
+            "use",
+            "need",
+            ".",
+            "want",
+            "get",
+            "<END>",
+            ".",
+            "<END>",
+            "<END>",
+            "is",
+            "me",
+            "<END>",
+            "good",
+            "no",
+            "<END>"
+          ],
+          "masked": 8
+        },
+        {
+          "round": 4,
+          "words": [
+            "money",
+            "use",
+            "need",
+            ".",
+            "want",
+            "me",
+            "<END>",
+            ".",
+            "<END>",
+            "<END>",
+            "?",
+            "mud",
+            "<END>",
+            "good",
+            "what",
+            "<END>"
+          ],
+          "masked": 5
+        },
+        {
+          "round": 5,
+          "words": [
+            "money",
+            "use",
+            "need",
+            ".",
+            "want",
+            "me",
+            "<END>",
+            ".",
+            "<END>",
+            "<END>",
+            "?",
+            "mud",
+            "<END>",
+            "cave",
+            "no",
+            "<END>"
+          ],
+          "masked": 2
+        }
+      ]
+    }
+  ],
+  "cavejev": {
+    "seq": [
+      {
+        "prompt": "Why is the sky blue?",
+        "text": "Is it do yes for light to from how way? No root in sky that then. Sun. Why tribe light see? Make have wind? Bird. Know think. Day? Up what? Sky? Bright? Where? If? Ask? Light? Sun? Is? Far is? Light how? Sun it?",
+        "words": 64,
+        "req": 64,
+        "tok": 140395,
+        "wall": 20.565376375
+      },
+      {
+        "prompt": "My code has a bug and I can't find it. What should I do?",
+        "text": "Bug look. Find. How try do. Think code. Fix. Use way.",
+        "words": 17,
+        "req": 18,
+        "tok": 39278,
+        "wall": 6.007038084
+      },
+      {
+        "prompt": "Tell me a story about a mammoth hunt.",
+        "text": "We go tell to mammoth hunt. Story we how was then spear kill. Is.",
+        "words": 17,
+        "req": 18,
+        "tok": 39165,
+        "wall": 5.965075584
+      },
+      {
+        "prompt": "What do you think about money?",
+        "text": "Money is good. Use.",
+        "words": 6,
+        "req": 7,
+        "tok": 15173,
+        "wall": 2.995256584
+      }
+    ]
+  },
+  "latency": [
+    {
+      "t": 100,
+      "q": 1,
+      "tok": 372,
+      "p50": 255.881167,
+      "min": 232.423042,
+      "max": 293.283833
+    },
+    {
+      "t": 100,
+      "q": 10,
+      "tok": 514,
+      "p50": 275.213542,
+      "min": 214.054,
+      "max": 321.669083
+    },
+    {
+      "t": 100,
+      "q": 50,
+      "tok": 1394,
+      "p50": 246.901083,
+      "min": 237.671708,
+      "max": 332.967333
+    },
+    {
+      "t": 500,
+      "q": 1,
+      "tok": 697,
+      "p50": 254.338292,
+      "min": 235.33,
+      "max": 281.481292
+    },
+    {
+      "t": 500,
+      "q": 10,
+      "tok": 839,
+      "p50": 262.11425,
+      "min": 225.644791,
+      "max": 506.396
+    },
+    {
+      "t": 500,
+      "q": 50,
+      "tok": 1719,
+      "p50": 252.3815,
+      "min": 251.193458,
+      "max": 271.611834
+    },
+    {
+      "t": 1000,
+      "q": 1,
+      "tok": 1096,
+      "p50": 274.582625,
+      "min": 228.440917,
+      "max": 301.996459
+    },
+    {
+      "t": 1000,
+      "q": 10,
+      "tok": 1238,
+      "p50": 265.288333,
+      "min": 224.401708,
+      "max": 273.020291
+    },
+    {
+      "t": 1000,
+      "q": 50,
+      "tok": 2118,
+      "p50": 271.600125,
+      "min": 251.917166,
+      "max": 317.113917
+    },
+    {
+      "t": 2000,
+      "q": 1,
+      "tok": 1880,
+      "p50": 232.039959,
+      "min": 226.459042,
+      "max": 305.052583
+    },
+    {
+      "t": 2000,
+      "q": 10,
+      "tok": 2022,
+      "p50": 266.757166,
+      "min": 221.153958,
+      "max": 283.415083
+    },
+    {
+      "t": 2000,
+      "q": 50,
+      "tok": 2902,
+      "p50": 245.787584,
+      "min": 229.392959,
+      "max": 540.512833
+    },
+    {
+      "t": 4000,
+      "q": 1,
+      "tok": 3494,
+      "p50": 261.254375,
+      "min": 238.342333,
+      "max": 306.437292
+    },
+    {
+      "t": 4000,
+      "q": 10,
+      "tok": 3636,
+      "p50": 244.283,
+      "min": 239.623208,
+      "max": 291.226459
+    },
+    {
+      "t": 4000,
+      "q": 50,
+      "tok": 4516,
+      "p50": 264.479834,
+      "min": 247.298042,
+      "max": 277.873875
+    },
+    {
+      "t": 8000,
+      "q": 1,
+      "tok": 6653,
+      "p50": 326.133916,
+      "min": 252.757334,
+      "max": 456.772
+    },
+    {
+      "t": 8000,
+      "q": 10,
+      "tok": 6795,
+      "p50": 276.355792,
+      "min": 246.075333,
+      "max": 419.031667
+    },
+    {
+      "t": 8000,
+      "q": 50,
+      "tok": 7675,
+      "p50": 316.5885,
+      "min": 266.958166,
+      "max": 771.049958
+    },
+    {
+      "t": 16000,
+      "q": 1,
+      "tok": 13100,
+      "p50": 327.463333,
+      "min": 285.139417,
+      "max": 442.794208
+    },
+    {
+      "t": 16000,
+      "q": 10,
+      "tok": 13242,
+      "p50": 315.6345,
+      "min": 301.176416,
+      "max": 378.923958
+    },
+    {
+      "t": 16000,
+      "q": 50,
+      "tok": 14122,
+      "p50": 342.685625,
+      "min": 306.47425,
+      "max": 684.89325
+    },
+    {
+      "t": 30000,
+      "q": 1,
+      "tok": 24318,
+      "p50": 426.104666,
+      "min": 384.236,
+      "max": 449.347292
+    },
+    {
+      "t": 30000,
+      "q": 10,
+      "tok": 24460,
+      "p50": 422.972833,
+      "min": 393.459541,
+      "max": 478.332
+    },
+    {
+      "t": 30000,
+      "q": 50,
+      "tok": 25340,
+      "p50": 463.027792,
+      "min": 392.376375,
+      "max": 836.759042
+    }
+  ],
+  "limits": {
+    "choice_255_options_tokens": 2461,
+    "choice_256_options_error": "HTTP 400: {\"detail\":\"Too many choices. Must have at most 255 choices.\"}",
+    "max_nouls_tokens": 47917,
+    "max_nouls_with_1k_state": 2000,
+    "max_pack_of_1900_token_traces": 12,
+    "max_state_chars": 171406,
+    "max_state_tokens": 33001
+  },
+  "sustained": {
+    "req_s": 97.97370272653205,
+    "tok_s": 287307.05569676834,
+    "r429": 3838,
+    "requests": 7281,
+    "cost": 0.896761782,
+    "buckets": [
+      {
+        "t": 0,
+        "req": 1628,
+        "tok": 4774560,
+        "r429": 0,
+        "p50": 1362.040375,
+        "p95": 2271.937
+      },
+      {
+        "t": 10,
+        "req": 1084,
+        "tok": 3177603,
+        "r429": 574,
+        "p50": 689.805792,
+        "p95": 5861.96725
+      },
+      {
+        "t": 20,
+        "req": 1072,
+        "tok": 3144122,
+        "r429": 743,
+        "p50": 701.40475,
+        "p95": 11008.9855
+      },
+      {
+        "t": 30,
+        "req": 1072,
+        "tok": 3142768,
+        "r429": 639,
+        "p50": 696.651375,
+        "p95": 6576.303625
+      },
+      {
+        "t": 40,
+        "req": 1059,
+        "tok": 3106969,
+        "r429": 668,
+        "p50": 597.233291,
+        "p95": 6718.786958
+      },
+      {
+        "t": 50,
+        "req": 1110,
+        "tok": 3254847,
+        "r429": 698,
+        "p50": 522.425334,
+        "p95": 6822.250167
+      },
+      {
+        "t": 60,
+        "req": 247,
+        "tok": 724245,
+        "r429": 475,
+        "p50": 4660.088959,
+        "p95": 31098.084583
+      },
+      {
+        "t": 70,
+        "req": 9,
+        "tok": 26357,
+        "r429": 41,
+        "p50": 24460.8395,
+        "p95": 56460.868084
+      }
+    ]
+  }
+}

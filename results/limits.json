@@ -1,0 +1,9 @@
+{
+ "choice_255_options_tokens": 2461,
+ "choice_256_options_error": "HTTP 400: {\"detail\":\"Too many choices. Must have at most 255 choices.\"}",
+ "max_nouls_tokens": 47917,
+ "max_nouls_with_1k_state": 2000,
+ "max_pack_of_1900_token_traces": 12,
+ "max_state_chars": 171406,
+ "max_state_tokens": 33001
+}
