@@ -16,6 +16,8 @@ node lint.mjs page.mdx --rules both --section-level 3 --threshold 0.8
 | Flag | Default | What it does |
 |---|---|---|
 | `--rules docs\|writing\|both` | `docs` | Which rule file(s) to load. `both` runs the docs rules and the writing rules on every section |
+| `--rules landing` | | `rules/landing.json`, the landing-page-writing rules, plus the writing rules, since every writing rule binds on a landing page |
+| `--context` | | Give the judge every section above the one it reads as `above`. Rules marked `"context": true` (landing rule 2, understandable from the page above; rule 9, product name defined) only run with it, and are skipped with a note without it. Write the page copy as one file, one `##` per block, in page order |
 | `--section-level N` | `2` | Split the file at headings of level N and above. Frontmatter is stripped, MDX components stay in the text |
 | `--threshold P` | `0.7` | Exit code 1 when any rule fires at or above P |
 | `--min P` | `0.5` | Only report rules at or above P |
@@ -54,6 +56,16 @@ Read a finding as "the judge thinks this section breaks rule X with probability 
 - `judge`: `instruction` written as a question about `text`, and `yes` / `no` criteria taken from the rule's own examples. `scope: "first-section"` limits it to the page opener. `locate: "heading"` or `"first-sentence"` reports that instead of asking Jev which sentence.
 
 The instruction wording is what the calibration tuned; the criteria matter as much as the question. When a rule misfires, rewrite the instruction with the guide's own example on each side and re-run `calibrate.mjs` before changing anything else. Do not quote sentences from the page you are about to lint as examples in a rule; the judge will match them and the report stops meaning anything.
+
+## Landing pages
+
+`rules/landing.json` holds the twelve checkable rules from landing-page-writing (rule 13 is the process itself). Write the page as markdown, one `##` per block in the order a visitor reads them (hero, each section with its subtitle, each card, the FAQ, the closing band), with buttons as markdown links, and run:
+
+```bash
+node lint.mjs page-copy.md --rules landing --context --threshold 0.6
+```
+
+`--context` is what makes rule 2 mean anything: each block is judged together with everything above it, the way a first-time visitor meets it.
 
 ## Cost
 
