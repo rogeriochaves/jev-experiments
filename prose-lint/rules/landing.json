@@ -89,9 +89,9 @@
       "id": "list-dressed-as-paragraphs",
       "name": "Rule 11: lists are lists, one line per item",
       "kind": "judge",
-      "instruction": "First, answer no (the rule passes) for a single sentence that enumerates options, places or kinds inside a FAQ answer, a subtitle or a card line: that is not a taught set. Otherwise: does `text` teach three or more steps, benefits or kinds as headed paragraphs or as prose, where a numbered list with a short bold name and one line per item would carry the same content? Three headed paragraphs of several lines each fail; a numbered list with one line per item passes.",
-      "yes": "three or more parallel items are written as paragraphs or prose instead of a list with one line each",
-      "no": "the items are a list with one line each, or the text has no such set"
+      "instruction": "Answer no (the rule passes) whenever every enumeration in `text` fits inside a single sentence, wherever it sits: a FAQ answer, a subtitle or a card line listing three kinds is not a list dressed as paragraphs. The failure is three or more parallel items each written as its own paragraph or headed block of prose (\"three headed paragraphs of four lines each\"), where a numbered list with a short bold name and one line per item would carry the same content. Does `text` have that failure?",
+      "yes": "three or more parallel items are each written as their own paragraph or headed block of prose",
+      "no": "the items are a list with one line each, every enumeration fits in one sentence, or there is no such set"
     },
     {
       "id": "faq-answers-first",
